@@ -1,6 +1,9 @@
 package javafamily.demo;
 
+import club.javafamily.nf.request.FeiShuPostNotifyRequest;
 import club.javafamily.nf.request.FeiShuTextNotifyRequest;
+import club.javafamily.nf.request.post.LinkPostTagContentItem;
+import club.javafamily.nf.request.post.PostTagContentItem;
 import club.javafamily.nf.service.FeiShuNotifyHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,4 +34,16 @@ public class ApplicationTests {
       System.out.println(response);
    }
 
+   @Test
+   void testNotifyPost() {
+      final FeiShuPostNotifyRequest request = FeiShuPostNotifyRequest.of(
+         "项目更新通知(标题)",
+         new PostTagContentItem("(测试)项目有更新: "),
+         new LinkPostTagContentItem("请查看",
+            "https://github.com/orgs/JavaFamilyClub/projects/3"));
+
+      final String response = notifyHandler.notify(request);
+
+      System.out.println(response);
+   }
 }
