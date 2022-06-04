@@ -15,4 +15,11 @@
         <module>feishu-notification</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>resttemplate-springboot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
