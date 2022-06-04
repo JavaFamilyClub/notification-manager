@@ -9,22 +9,25 @@ import java.io.Serializable;
  * @date 2022/6/4 下午10:51
  * @description 文本消息
  */
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class FeiShuTextNotifyRequest extends NotifyRequest {
-   @Builder.Default
-   private String msg_type = "text";
+public class FeiShuTextNotifyRequest extends FeiShuNotifyRequest {
 
    private FeiShuTextContent content;
 
    public static FeiShuTextNotifyRequest of(String content) {
       final FeiShuTextContent textContent = new FeiShuTextContent(content);
 
-      return FeiShuTextNotifyRequest.builder()
-         .content(textContent)
-         .build();
+      final FeiShuTextNotifyRequest request = new FeiShuTextNotifyRequest();
+      request.setContent(textContent);
+
+      return request;
+   }
+
+   @Override
+   public String getMsg_type() {
+      return "text";
    }
 
    @NoArgsConstructor

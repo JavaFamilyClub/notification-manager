@@ -1,0 +1,6 @@
+javafamily:
+   notify:
+      feishu:
+         hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
+         security-type: keyword
+         keyWord: 测试

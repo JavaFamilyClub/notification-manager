@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="~.*\.(config|conf)\..*" />
+    <Bug code="EI,EI2,NP" />
+  </Match>
+
+  <Match>
+    <Class name="~.*\.(.*)\..*" />
+    <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2" />
+  </Match>
+
+  <Match>
+    <Class name="~.*\.(model|entity|vo|dto)\..*" />
+    <Method name="~(get.*|set.*|is.*)" />
+    <Bug code="EI,EI2" />
+  </Match>
+</FindBugsFilter>
