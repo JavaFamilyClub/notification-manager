@@ -12,13 +12,14 @@
     <version>2.3.2-SNAPSHOT</version>
 
     <modules>
-        <module>feishu-notification</module>
+        <module>feishu-notification-spring-boot-starter</module>
     </modules>
 
     <dependencies>
         <dependency>
-            <groupId>club.javafamily</groupId>
-            <artifactId>resttemplate-springboot-starter</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

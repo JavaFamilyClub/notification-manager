@@ -10,5 +10,5 @@ public interface NotifyHandler<NR extends NotifyRequest> {
      * 通知
      * @param request 请求参数
      */
-    void notify(NR request);
+    String notify(NR request);
 }

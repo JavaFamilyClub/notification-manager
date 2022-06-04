@@ -1,7 +1,9 @@
 package club.javafamily.nf.enums;
 
 /**
- * 安全设置方式
+ * @author Jack Li
+ * @date 2022/6/4 下午10:39
+ * @description 安全设置
  */
 public enum SecurityConfTypeEnum {
 

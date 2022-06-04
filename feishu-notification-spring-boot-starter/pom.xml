@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>feishu-notification</artifactId>
+    <artifactId>feishu-notification-spring-boot-starter</artifactId>
 
     <dependencies>
         <dependency>
@@ -19,9 +19,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <groupId>club.javafamily</groupId>
+            <artifactId>resttemplate-springboot-starter</artifactId>
         </dependency>
     </dependencies>
 

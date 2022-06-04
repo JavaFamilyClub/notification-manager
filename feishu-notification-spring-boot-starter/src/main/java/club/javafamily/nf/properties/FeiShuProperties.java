@@ -4,16 +4,16 @@ import club.javafamily.nf.enums.SecurityConfTypeEnum;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 飞书通知属性配置
+ * @author Jack Li
+ * @date 2022/6/4 下午10:42
+ * @description 飞书通知属性配置
  */
 @Data
 @Component
-@EnableConfigurationProperties(FeiShuProperties.class)
-@ConfigurationProperties(prefix = "club.javafamily.nf.feishu")
+@ConfigurationProperties(prefix = "javafamily.notify.feishu")
 public class FeiShuProperties {
     /**
      * WehbHook url
