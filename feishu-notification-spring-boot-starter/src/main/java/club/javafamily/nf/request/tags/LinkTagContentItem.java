@@ -1,4 +1,4 @@
-package club.javafamily.nf.request.post;
+package club.javafamily.nf.request.tags;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,14 +10,14 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class LinkPostTagContentItem extends PostTagContentItem {
+public class LinkTagContentItem extends BaseTextTagContentItem {
    private String href;
 
-   public LinkPostTagContentItem() {
+   public LinkTagContentItem() {
       this.tag = "a";
    }
 
-   public LinkPostTagContentItem(String text, String href) {
+   public LinkTagContentItem(String text, String href) {
       this();
       this.text = text;
       this.href = href;

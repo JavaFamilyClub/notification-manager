@@ -30,4 +30,10 @@ public class FeiShuProperties {
      * 关键词
      */
     private String keyWord;
+
+    /**
+     * 上传图片地址
+     */
+    @Builder.Default
+    private String uploadImageUrl = "https://open.feishu.cn/open-apis/im/v1/images";
 }

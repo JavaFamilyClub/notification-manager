@@ -1,8 +1,12 @@
 package club.javafamily.nf.service;
 
 import club.javafamily.nf.properties.FeiShuProperties;
+import club.javafamily.nf.request.FeiShuImageNotifyRequest;
 import club.javafamily.nf.request.FeiShuNotifyRequest;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.InputStream;
 
 /**
  * @author Jack Li
@@ -23,6 +27,22 @@ public class FeiShuNotifyHandler implements NotifyHandler<FeiShuNotifyRequest> {
 
     @Override
     public String notify(FeiShuNotifyRequest request) {
+        if(request instanceof FeiShuImageNotifyRequest) {
+            final FeiShuImageNotifyRequest.FeiShuImageContent content
+               = ((FeiShuImageNotifyRequest) request).getContent();
+
+            if(content instanceof FeiShuImageNotifyRequest.FeiShuImageStreamContent
+                && ObjectUtils.isEmpty(content.getImage_key()))
+            {
+                final InputStream in = ((FeiShuImageNotifyRequest
+                   .FeiShuImageStreamContent) content).getImageStream();
+
+                // TODO upload image: this is need to authrization on feishu platform.
+
+                throw new UnsupportedOperationException("Not supported for now, it is being improved.");
+            }
+        }
+
         return restTemplate.postForObject(
            properties.getHookUrl(), request, String.class);
     }

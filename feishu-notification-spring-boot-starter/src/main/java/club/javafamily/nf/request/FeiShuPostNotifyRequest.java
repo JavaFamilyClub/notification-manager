@@ -1,6 +1,6 @@
 package club.javafamily.nf.request;
 
-import club.javafamily.nf.request.post.PostTagContentItem;
+import club.javafamily.nf.request.tags.BaseTextTagContentItem;
 import lombok.*;
 
 import java.io.Serializable;
@@ -17,11 +17,11 @@ public class FeiShuPostNotifyRequest extends FeiShuNotifyRequest {
 
    private FeiShuPostContent content;
 
-   public static FeiShuPostNotifyRequest of(String title, PostTagContentItem...items) {
-      return FeiShuPostNotifyRequest.of(title, new PostTagContentItem[][] { items });
+   public static FeiShuPostNotifyRequest of(String title, BaseTextTagContentItem...items) {
+      return FeiShuPostNotifyRequest.of(title, new BaseTextTagContentItem[][] { items });
    }
 
-   public static FeiShuPostNotifyRequest of(String title, PostTagContentItem[][] items) {
+   public static FeiShuPostNotifyRequest of(String title, BaseTextTagContentItem[][] items) {
       final FeiShuPostContent requestContent
          = new FeiShuPostContent(new FeiShuPostContentPost(
             new FeiShuPostContentPostLocale(title, items)
@@ -35,7 +35,7 @@ public class FeiShuPostNotifyRequest extends FeiShuNotifyRequest {
 
    @Override
    public String getMsg_type() {
-      return "post";
+      return "tags";
    }
 
    @NoArgsConstructor
@@ -57,6 +57,6 @@ public class FeiShuPostNotifyRequest extends FeiShuNotifyRequest {
    @Data
    public static class FeiShuPostContentPostLocale implements Serializable {
       private String title;
-      private PostTagContentItem[][] content;
+      private BaseTextTagContentItem[][] content;
    }
 }
