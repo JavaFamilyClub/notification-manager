@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>club.javafamily</groupId>
-            <artifactId>resttemplate-springboot-starter</artifactId>
+            <artifactId>javafamily-resttemplate-starter</artifactId>
         </dependency>
     </dependencies>
 
