@@ -1,6 +1,7 @@
 package club.javafamily.nf.request.link;
 
 import club.javafamily.nf.request.content.TextRequestContent;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,6 +12,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Builder
 public class LinkRequestContent extends TextRequestContent {
 
     private String title;

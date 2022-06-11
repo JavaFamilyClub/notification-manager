@@ -4,6 +4,7 @@ import club.javafamily.nf.enums.CardBtnOrientationEnum;
 import club.javafamily.nf.request.FeiShuCardNotifyRequest;
 import club.javafamily.nf.request.FeiShuImageNotifyRequest;
 import club.javafamily.nf.request.FeiShuPostNotifyRequest;
+import club.javafamily.nf.request.card.feed.DingTalkFeedCardRequest;
 import club.javafamily.nf.request.card.multi.DingTalkMultiBtnCardRequest;
 import club.javafamily.nf.request.card.single.DingTalkSingleBtnCardRequest;
 import club.javafamily.nf.request.link.DingTalkLinkRequest;
@@ -134,6 +135,26 @@ public class DingTalkNotifyTests {
 
       final DingTalkMultiBtnCardRequest request
               = DingTalkMultiBtnCardRequest.of("测试xxx数据监控", content,
+              new CardBtn());
+
+      final String response = dingTalkNotifyHandler.notify(request);
+
+      System.out.println(response);
+   }
+
+   @Test
+   void testNotifyFeedCard() {
+      String dataTime = "2022-06-05 23:00:00";
+      int shouldCount = 20, actualCount = 20;
+      String status = actualCount < shouldCount ? "异常" : "正常";
+
+      String content = "数据时次: " + dataTime
+              + "\n应收收据个数: " + shouldCount
+              + "\n实收数据个数: " + actualCount
+              + "\n监控状态: **" + status + "**";
+
+      final DingTalkFeedCardRequest request
+              = DingTalkFeedCardRequest.of("测试xxx数据监控", content,
               new CardBtn());
 
       final String response = dingTalkNotifyHandler.notify(request);
