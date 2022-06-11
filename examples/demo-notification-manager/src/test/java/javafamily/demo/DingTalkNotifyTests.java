@@ -5,6 +5,7 @@ import club.javafamily.nf.request.FeiShuCardNotifyRequest;
 import club.javafamily.nf.request.FeiShuImageNotifyRequest;
 import club.javafamily.nf.request.FeiShuPostNotifyRequest;
 import club.javafamily.nf.request.card.feed.DingTalkFeedCardRequest;
+import club.javafamily.nf.request.card.feed.FeedCardRequestContentLink;
 import club.javafamily.nf.request.card.multi.DingTalkMultiBtnCardRequest;
 import club.javafamily.nf.request.card.single.DingTalkSingleBtnCardRequest;
 import club.javafamily.nf.request.link.DingTalkLinkRequest;
@@ -146,20 +147,20 @@ public class DingTalkNotifyTests {
    @Test
    void testNotifyFeedCard() {
       final DingTalkFeedCardRequest request
-              = DingTalkFeedCardRequest.of(LinkRequestContent.builder()
+              = DingTalkFeedCardRequest.of(FeedCardRequestContentLink.builder()
                       .title("Notification Manager(测试)")
-                      .messageUrl("https://github.com/orgs/JavaFamilyClub/projects/3")
-                      .picUrl("https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png")
+                      .messageURL("https://github.com/orgs/JavaFamilyClub/projects/3")
+                      .picURL("https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png")
               .build(),
-              LinkRequestContent.builder()
+              FeedCardRequestContentLink.builder()
                       .title("JavaFamily Utils")
-                      .messageUrl("https://github.com/JavaFamilyClub/javafamily-utils/actions")
-                      .picUrl("https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF")
+                      .messageURL("https://github.com/JavaFamilyClub/javafamily-utils/actions")
+                      .picURL("https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF")
                       .build(),
-              LinkRequestContent.builder()
+              FeedCardRequestContentLink.builder()
                       .title("JavaFamily Parent Bom")
-                      .messageUrl("https://github.com/JavaFamilyClub/javafamily-parent/actions")
-                      .picUrl("https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF")
+                      .messageURL("https://github.com/JavaFamilyClub/javafamily-parent/actions")
+                      .picURL("https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF")
                       .build());
 
       final String response = dingTalkNotifyHandler.notify(request);
