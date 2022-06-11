@@ -16,7 +16,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class FeiShuCardNotifyRequest extends BaseFeiShuNotifyRequest {
+public class FeiShuCardNotifyRequest extends FeiShuNotifyRequest {
    private FeiShuCardRequestContent card;
 
    public static FeiShuCardNotifyRequest of(String title,

@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author Jack Li
  * @date 2022/6/4 下午10:26
- * @description
+ * @description 钉钉机器人通知处理器
  */
 public class DingTalkNotifyHandler extends BaseWebHookNotifyHandler<NotifyRequest> {
 

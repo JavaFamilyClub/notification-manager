@@ -8,7 +8,7 @@ import lombok.Data;
  * @description 文本消息
  */
 @Data
-public abstract class BaseFeiShuNotifyRequest implements NotifyRequest {
+public abstract class FeiShuNotifyRequest implements NotifyRequest {
 
    /**
     * 消息类型

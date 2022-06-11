@@ -1,8 +1,7 @@
 package club.javafamily.nf.request;
 
+import club.javafamily.nf.request.content.TextRequestContent;
 import lombok.*;
-
-import java.io.Serializable;
 
 /**
  * @author Jack Li
@@ -13,12 +12,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class FeiShuTextNotifyRequest extends BaseFeiShuNotifyRequest {
+public class FeiShuTextNotifyRequest extends FeiShuNotifyRequest {
 
-   private FeiShuTextContent content;
+   private TextRequestContent content;
 
    public static FeiShuTextNotifyRequest of(String content) {
-      final FeiShuTextContent textContent = new FeiShuTextContent(content);
+      final TextRequestContent textContent = new TextRequestContent(content);
 
       final FeiShuTextNotifyRequest request = new FeiShuTextNotifyRequest();
       request.setContent(textContent);
@@ -31,10 +30,4 @@ public class FeiShuTextNotifyRequest extends BaseFeiShuNotifyRequest {
       return "text";
    }
 
-   @NoArgsConstructor
-   @AllArgsConstructor
-   @Data
-   public static class FeiShuTextContent implements Serializable {
-      private String text;
-   }
 }

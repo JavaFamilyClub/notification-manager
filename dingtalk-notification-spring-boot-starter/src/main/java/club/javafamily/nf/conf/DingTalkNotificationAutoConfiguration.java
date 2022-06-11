@@ -16,19 +16,19 @@ import org.springframework.web.client.RestTemplate;
 @EnableConfigurationProperties(DingTalkProperties.class)
 public class DingTalkNotificationAutoConfiguration {
 
-   private final DingTalkProperties feiShuProperties;
+   private final DingTalkProperties properties;
    private final RestTemplate restTemplate;
 
-   public DingTalkNotificationAutoConfiguration(DingTalkProperties feiShuProperties,
+   public DingTalkNotificationAutoConfiguration(DingTalkProperties properties,
                                                 RestTemplate restTemplate)
    {
-      this.feiShuProperties = feiShuProperties;
+      this.properties = properties;
       this.restTemplate = restTemplate;
    }
 
    @Bean
    public DingTalkNotifyHandler feiShuNotifyHandler() {
-      return new DingTalkNotifyHandler(feiShuProperties, restTemplate);
+      return new DingTalkNotifyHandler(properties, restTemplate);
    }
 
 }

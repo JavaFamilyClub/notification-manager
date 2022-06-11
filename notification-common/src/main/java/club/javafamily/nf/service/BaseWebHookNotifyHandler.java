@@ -20,6 +20,10 @@ public abstract class BaseWebHookNotifyHandler<NR extends NotifyRequest> impleme
 //        throw new UnsupportedOperationException("Unsupported Operation!");
 //    }
 
+    /**
+     * getting robot webhook url
+     * @return url
+     */
     public abstract String getHookUrl();
 
     @Override
