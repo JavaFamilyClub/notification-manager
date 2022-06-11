@@ -9,11 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>feishu-notification-spring-boot-starter</artifactId>
+    <artifactId>dingtalk-notification-spring-boot-starter</artifactId>
+    <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
     <description>${project.artifactId}</description>
-    <url>https://github.com/JavaFamilyClub/notification-manager/tree/main/feishu-notification-spring-boot-starter</url>
+    <url>https://github.com/JavaFamilyClub/notification-manager/tree/main/dingtalk-notification-spring-boot-starter</url>
 
     <dependencies>
         <dependency>

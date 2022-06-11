@@ -17,7 +17,18 @@
     <modules>
         <module>notification-common</module>
         <module>feishu-notification-spring-boot-starter</module>
+        <module>dingtalk-notification-spring-boot-starter</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>club.javafamily</groupId>
+                <artifactId>notification-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -30,6 +41,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>notification-common</artifactId>
         </dependency>
     </dependencies>
 
