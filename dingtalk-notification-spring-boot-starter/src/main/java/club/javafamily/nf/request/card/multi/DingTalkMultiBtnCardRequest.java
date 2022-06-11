@@ -36,7 +36,7 @@ public class DingTalkMultiBtnCardRequest extends DingTalkNotifyRequest {
     }
 
     @Override
-    public String getMsgType() {
+    public String getMsgtype() {
         return "actionCard";
     }
 

@@ -15,7 +15,7 @@ public abstract class DingTalkNotifyRequest implements NotifyRequest {
     * 消息类型
     * @return
     */
-   public abstract String getMsgType();
+   public abstract String getMsgtype();
 
    /**
     * @ 人员配置

@@ -27,7 +27,7 @@ public class DingTalkFeedCardRequest extends DingTalkNotifyRequest {
     }
 
     @Override
-    public String getMsgType() {
+    public String getMsgtype() {
         return "feedCard";
     }
 

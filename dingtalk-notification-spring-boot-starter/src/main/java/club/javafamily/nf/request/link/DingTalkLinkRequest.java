@@ -36,7 +36,7 @@ public class DingTalkLinkRequest extends DingTalkNotifyRequest {
     }
 
     @Override
-    public String getMsgType() {
+    public String getMsgtype() {
         return "link";
     }
 

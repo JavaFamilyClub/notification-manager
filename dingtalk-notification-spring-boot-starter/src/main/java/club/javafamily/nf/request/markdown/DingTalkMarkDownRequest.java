@@ -71,7 +71,7 @@ public class DingTalkMarkDownRequest extends DingTalkNotifyRequest {
     }
 
     @Override
-    public String getMsgType() {
+    public String getMsgtype() {
         return "markdown";
     }
 
