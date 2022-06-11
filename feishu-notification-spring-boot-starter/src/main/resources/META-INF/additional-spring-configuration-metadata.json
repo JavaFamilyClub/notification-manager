@@ -2,8 +2,8 @@
    "groups": [
       {
          "name": "javafamily.notify.feishu",
-         "type": "club.javafamily.nf.properties.WebHookProperties",
-         "sourceType": "club.javafamily.nf.properties.WebHookProperties"
+         "type": "club.javafamily.nf.properties.FeiShuProperties",
+         "sourceType": "club.javafamily.nf.properties.FeiShuProperties"
       }
    ],
    "properties": [
@@ -11,7 +11,7 @@
          "name": "javafamily.notify.feishu.hookUrl",
          "type": "java.lang.String",
          "description": "机器人 WebHook Url.",
-         "sourceType": "club.javafamily.nf.properties.WebHookProperties",
+         "sourceType": "club.javafamily.nf.properties.FeiShuProperties",
          "defaultValue": "https://open.feishu.cn/open-apis/bot/v2/hook/xxxx"
       },
       {

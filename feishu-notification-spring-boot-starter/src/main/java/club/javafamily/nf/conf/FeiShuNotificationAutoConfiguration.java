@@ -1,7 +1,6 @@
 package club.javafamily.nf.conf;
 
 import club.javafamily.nf.properties.FeiShuProperties;
-import club.javafamily.nf.properties.WebHookProperties;
 import club.javafamily.nf.service.FeiShuNotifyHandler;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
