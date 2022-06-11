@@ -1,10 +1,17 @@
 package javafamily.demo;
 
-import club.javafamily.nf.request.*;
-import club.javafamily.nf.request.tags.LinkTagContentItem;
+import club.javafamily.nf.request.FeiShuCardNotifyRequest;
+import club.javafamily.nf.request.FeiShuImageNotifyRequest;
+import club.javafamily.nf.request.FeiShuPostNotifyRequest;
+import club.javafamily.nf.request.FeiShuTextNotifyRequest;
 import club.javafamily.nf.request.tags.BaseTextTagContentItem;
+import club.javafamily.nf.request.tags.LinkTagContentItem;
+import club.javafamily.nf.request.text.DingTalkTextNotifyRequest;
+import club.javafamily.nf.service.DingTalkNotifyHandler;
 import club.javafamily.nf.service.FeiShuNotifyHandler;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,11 +20,11 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @date 2022/6/4 下午11:03
  * @description
  */
-@SpringBootTest
-public class ApplicationTests {
+//@SpringBootTest
+public class DingTalkNotifyTests {
 
    @Autowired
-   private FeiShuNotifyHandler notifyHandler;
+   private DingTalkNotifyHandler notifyHandler;
 
    @Test
    void contextLoad() {
@@ -27,7 +34,7 @@ public class ApplicationTests {
    @Test
    void testNotifyText() {
       final String response = notifyHandler.notify(
-         FeiShuTextNotifyRequest.of("这是一个测试数据!"));
+         DingTalkTextNotifyRequest.of("这是一个测试数据!"));
 
       System.out.println(response);
    }

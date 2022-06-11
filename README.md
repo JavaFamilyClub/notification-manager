@@ -12,9 +12,16 @@
   * 富文本
   * 图片(delay)
   * 消息卡片
-* 钉钉(Current)
-* 腾讯短信
+* 钉钉
+  * 普通文本
+  * MarkDown
+  * Link
+  * 卡片消息
+    * 单按钮
+    * 多按钮
+    * feed card
+* Tencent 短信(Current)
 * UCloud 短信
 * 邮箱
-* WebHook
+
 

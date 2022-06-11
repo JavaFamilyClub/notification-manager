@@ -12,6 +12,10 @@
    <artifactId>demo-notification-manager</artifactId>
    <version>1.0-SNAPSHOT</version>
 
+   <properties>
+      <notification.manager.version>2.3.2-SNAPSHOT</notification.manager.version>
+   </properties>
+
    <dependencies>
       <dependency>
          <groupId>org.springframework.boot</groupId>
@@ -27,7 +31,13 @@
       <dependency>
          <groupId>club.javafamily</groupId>
          <artifactId>feishu-notification-spring-boot-starter</artifactId>
-         <version>2.3.2-SNAPSHOT</version>
+         <version>${notification.manager.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>club.javafamily</groupId>
+         <artifactId>dingtalk-notification-spring-boot-starter</artifactId>
+         <version>${notification.manager.version}</version>
       </dependency>
 
       <dependency>

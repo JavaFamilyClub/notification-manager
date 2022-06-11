@@ -12,7 +12,7 @@
          "type": "java.lang.String",
          "description": "机器人 WebHook Url.",
          "sourceType": "club.javafamily.nf.properties.DingTalkProperties",
-         "defaultValue": "https://open.feishu.cn/open-apis/bot/v2/hook/xxxx"
+         "defaultValue": "https://oapi.dingtalk.com/robot/send?access_token="
       },
       {
          "name": "javafamily.notify.dingtalk.securityType",

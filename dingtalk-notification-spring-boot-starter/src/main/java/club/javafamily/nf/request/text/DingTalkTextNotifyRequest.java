@@ -20,6 +20,10 @@ public class DingTalkTextNotifyRequest extends DingTalkNotifyRequest {
 
     private TextRequestContent content;
 
+    public static DingTalkTextNotifyRequest of(String content) {
+        return DingTalkTextNotifyRequest.of(content, false, null);
+    }
+
     public static DingTalkTextNotifyRequest of(String content, boolean atAll, String...atUserPhones) {
         final TextRequestContent textContent = new TextRequestContent(content);
 
