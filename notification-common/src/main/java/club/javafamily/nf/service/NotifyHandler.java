@@ -1,8 +1,6 @@
 package club.javafamily.nf.service;
 
-import club.javafamily.nf.properties.FeiShuProperties;
 import club.javafamily.nf.request.NotifyRequest;
-import org.springframework.stereotype.Component;
 
 public interface NotifyHandler<NR extends NotifyRequest> {
 

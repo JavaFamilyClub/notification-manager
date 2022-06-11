@@ -1,6 +1,6 @@
 package club.javafamily.nf.conf;
 
-import club.javafamily.nf.properties.FeiShuProperties;
+import club.javafamily.nf.properties.WebHookProperties;
 import club.javafamily.nf.service.FeiShuNotifyHandler;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -13,13 +13,13 @@ import org.springframework.web.client.RestTemplate;
  * @description
  */
 @Configuration(proxyBeanMethods = false)
-@EnableConfigurationProperties(FeiShuProperties.class)
+@EnableConfigurationProperties(WebHookProperties.class)
 public class FeiShuNotificationAutoConfiguration {
 
-   private final FeiShuProperties feiShuProperties;
+   private final WebHookProperties feiShuProperties;
    private final RestTemplate restTemplate;
 
-   public FeiShuNotificationAutoConfiguration(FeiShuProperties feiShuProperties,
+   public FeiShuNotificationAutoConfiguration(WebHookProperties feiShuProperties,
                                               RestTemplate restTemplate)
    {
       this.feiShuProperties = feiShuProperties;

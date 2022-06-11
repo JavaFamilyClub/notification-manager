@@ -1,27 +1,27 @@
 {
    "groups": [
       {
-         "name": "javafamily.notify.feishu",
-         "type": "club.javafamily.nf.properties.WebHookProperties",
-         "sourceType": "club.javafamily.nf.properties.WebHookProperties"
+         "name": "javafamily.notify.dingtalk",
+         "type": "club.javafamily.nf.properties.DingTalkProperties",
+         "sourceType": "club.javafamily.nf.properties.DingTalkProperties"
       }
    ],
    "properties": [
       {
-         "name": "javafamily.notify.feishu.hookUrl",
+         "name": "javafamily.notify.dingtalk.hookUrl",
          "type": "java.lang.String",
          "description": "机器人 WebHook Url.",
-         "sourceType": "club.javafamily.nf.properties.WebHookProperties",
+         "sourceType": "club.javafamily.nf.properties.DingTalkProperties",
          "defaultValue": "https://open.feishu.cn/open-apis/bot/v2/hook/xxxx"
       },
       {
-         "name": "javafamily.notify.feishu.securityType",
+         "name": "javafamily.notify.dingtalk.securityType",
          "type": "club.javafamily.nf.enums.SecurityConfTypeEnum",
          "description": "安全类型.",
          "defaultValue": "KEYWORD"
       },
       {
-         "name": "javafamily.notify.feishu.keyWord",
+         "name": "javafamily.notify.dingtalk.keyWord",
          "type": "java.lang.String",
          "description": "关键词."
       }

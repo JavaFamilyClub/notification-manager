@@ -1,6 +1,6 @@
 package club.javafamily.nf.request;
 
-import lombok.*;
+import lombok.Data;
 
 /**
  * @author Jack Li
@@ -8,7 +8,7 @@ import lombok.*;
  * @description 文本消息
  */
 @Data
-public abstract class FeiShuNotifyRequest extends NotifyRequest {
+public abstract class BaseFeiShuNotifyRequest implements NotifyRequest {
 
    /**
     * 消息类型

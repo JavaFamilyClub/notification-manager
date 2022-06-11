@@ -1,8 +1,9 @@
 package club.javafamily.nf.service;
 
-import club.javafamily.nf.properties.FeiShuProperties;
+import club.javafamily.nf.properties.WebHookProperties;
+import club.javafamily.nf.request.BaseFeiShuNotifyRequest;
 import club.javafamily.nf.request.FeiShuImageNotifyRequest;
-import club.javafamily.nf.request.FeiShuNotifyRequest;
+import club.javafamily.nf.request.NotifyRequest;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,20 +14,26 @@ import java.io.InputStream;
  * @date 2022/6/4 下午10:26
  * @description
  */
-public class FeiShuNotifyHandler implements NotifyHandler<FeiShuNotifyRequest> {
+public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<BaseFeiShuNotifyRequest> {
 
-    private final FeiShuProperties properties;
+    private final WebHookProperties properties;
     private final RestTemplate restTemplate;
 
-    public FeiShuNotifyHandler(FeiShuProperties properties,
+    public FeiShuNotifyHandler(WebHookProperties properties,
                                RestTemplate restTemplate)
     {
+        super(restTemplate);
         this.properties = properties;
         this.restTemplate = restTemplate;
     }
 
     @Override
-    public String notify(FeiShuNotifyRequest request) {
+    public String getHookUrl() {
+        return properties.getHookUrl();
+    }
+
+    @Override
+    public String notify(BaseFeiShuNotifyRequest request) {
         if(request instanceof FeiShuImageNotifyRequest) {
             final FeiShuImageNotifyRequest.FeiShuImageContent content
                = ((FeiShuImageNotifyRequest) request).getContent();

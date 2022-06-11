@@ -13,10 +13,6 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "javafamily.notify.feishu")
-public class FeiShuProperties extends WebHookProperties {
-    /**
-     * 上传图片地址
-     */
-    private String uploadImageUrl = "https://open.feishu.cn/open-apis/im/v1/images";
+@ConfigurationProperties(prefix = "javafamily.notify.dingtalk")
+public class DingTalkProperties extends WebHookProperties {
 }

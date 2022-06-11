@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class FeiShuTextNotifyRequest extends FeiShuNotifyRequest {
+public class FeiShuTextNotifyRequest extends BaseFeiShuNotifyRequest {
 
    private FeiShuTextContent content;
 
