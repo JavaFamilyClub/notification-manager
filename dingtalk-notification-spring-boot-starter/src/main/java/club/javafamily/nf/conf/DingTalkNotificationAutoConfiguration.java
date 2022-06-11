@@ -27,7 +27,7 @@ public class DingTalkNotificationAutoConfiguration {
    }
 
    @Bean
-   public DingTalkNotifyHandler feiShuNotifyHandler() {
+   public DingTalkNotifyHandler dingTalkNotifyHandler() {
       return new DingTalkNotifyHandler(properties, restTemplate);
    }
 
