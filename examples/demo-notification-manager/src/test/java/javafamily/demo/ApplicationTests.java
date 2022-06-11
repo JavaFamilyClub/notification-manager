@@ -35,7 +35,7 @@ public class ApplicationTests {
    @Test
    void testNotifyPost() {
       final FeiShuPostNotifyRequest request = FeiShuPostNotifyRequest.of(
-         "项目更新通知(标题)",
+         "项目更新通知(测试)",
          new BaseTextTagContentItem("(测试)项目有更新: "),
          new LinkTagContentItem("请查看",
             "https://github.com/orgs/JavaFamilyClub/projects/3"));

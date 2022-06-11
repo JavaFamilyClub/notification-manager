@@ -15,6 +15,7 @@
     <url>https://github.com/JavaFamilyClub/notification-manager</url>
 
     <modules>
+        <module>notification-common</module>
         <module>feishu-notification-spring-boot-starter</module>
     </modules>
 

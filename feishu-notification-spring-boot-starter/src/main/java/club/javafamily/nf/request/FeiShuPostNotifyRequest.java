@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * @author Jack Li
  * @date 2022/6/4 下午10:51
- * @description 文本消息
+ * @description 富文本消息
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,7 +35,7 @@ public class FeiShuPostNotifyRequest extends FeiShuNotifyRequest {
 
    @Override
    public String getMsg_type() {
-      return "tags";
+      return "post";
    }
 
    @NoArgsConstructor
