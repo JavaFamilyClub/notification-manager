@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class DingTalkLinkRequest extends DingTalkNotifyRequest {
 
-    private LinkRequestContent content;
+    private LinkRequestContent link;
 
     public static DingTalkLinkRequest of(String title, String content, String messageUrl) {
         return DingTalkLinkRequest.of(title, content, messageUrl, null);
@@ -30,7 +30,7 @@ public class DingTalkLinkRequest extends DingTalkNotifyRequest {
                 = new LinkRequestContent(title, content, messageUrl, picUrl);
 
         final DingTalkLinkRequest request = new DingTalkLinkRequest();
-        request.setContent(textContent);
+        request.setLink(textContent);
 
         return request;
     }

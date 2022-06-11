@@ -3,6 +3,7 @@ package javafamily.demo;
 import club.javafamily.nf.request.FeiShuCardNotifyRequest;
 import club.javafamily.nf.request.FeiShuImageNotifyRequest;
 import club.javafamily.nf.request.FeiShuPostNotifyRequest;
+import club.javafamily.nf.request.link.DingTalkLinkRequest;
 import club.javafamily.nf.request.tags.BaseTextTagContentItem;
 import club.javafamily.nf.request.tags.LinkTagContentItem;
 import club.javafamily.nf.request.text.DingTalkTextNotifyRequest;
@@ -46,12 +47,10 @@ public class DingTalkNotifyTests {
    }
 
    @Test
-   void testNotifyPost() {
-      final FeiShuPostNotifyRequest request = FeiShuPostNotifyRequest.of(
-         "项目更新通知(测试)",
-         new BaseTextTagContentItem("(测试)项目有更新: "),
-         new LinkTagContentItem("请查看",
-            "https://github.com/orgs/JavaFamilyClub/projects/3"));
+   void testNotifyLink() {
+      DingTalkLinkRequest request = DingTalkLinkRequest.of("项目更新通知(测试)",
+              "项目有更新, 请查看",
+              "https://github.com/orgs/JavaFamilyClub/projects/3");
 
       final String response = dingTalkNotifyHandler.notify(request);
 
