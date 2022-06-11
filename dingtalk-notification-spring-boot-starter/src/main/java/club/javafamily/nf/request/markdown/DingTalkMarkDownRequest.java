@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
  * @author Jack Li
  * @date 2022/6/4 下午10:35
  * @description MarkDown 消息
+ * @warn @成员必须在text内容里要有@人的手机号
  *
  * 目前的 MarkDown 之支持如下语法:
  * <code>

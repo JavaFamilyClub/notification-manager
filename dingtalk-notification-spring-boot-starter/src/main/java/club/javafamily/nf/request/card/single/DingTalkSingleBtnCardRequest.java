@@ -16,14 +16,14 @@ public class DingTalkSingleBtnCardRequest extends DingTalkNotifyRequest {
     private SingleCardRequestContent actionCard;
 
     public static DingTalkSingleBtnCardRequest of(String title, String text,
-                                             String singleTitle, String singleURL)
+                                                  String singleTitle, String singleURL)
     {
         return DingTalkSingleBtnCardRequest.of(title, text, singleTitle, singleURL, null);
     }
 
     public static DingTalkSingleBtnCardRequest of(String title, String text,
-                                             String singleTitle, String singleURL,
-                                             CardBtnOrientationEnum btnOrientationEnum)
+                                                  String singleTitle, String singleURL,
+                                                  CardBtnOrientationEnum btnOrientationEnum)
     {
         final SingleCardRequestContent content
                 = new SingleCardRequestContent(title, text, singleTitle, singleURL, btnOrientationEnum);
