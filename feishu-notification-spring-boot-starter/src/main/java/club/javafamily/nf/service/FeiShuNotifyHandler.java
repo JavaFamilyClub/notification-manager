@@ -1,5 +1,6 @@
 package club.javafamily.nf.service;
 
+import club.javafamily.nf.properties.FeiShuProperties;
 import club.javafamily.nf.properties.WebHookProperties;
 import club.javafamily.nf.request.FeiShuNotifyRequest;
 import club.javafamily.nf.request.FeiShuImageNotifyRequest;
@@ -15,10 +16,10 @@ import java.io.InputStream;
  */
 public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRequest> {
 
-    private final WebHookProperties properties;
+    private final FeiShuProperties properties;
     private final RestTemplate restTemplate;
 
-    public FeiShuNotifyHandler(WebHookProperties properties,
+    public FeiShuNotifyHandler(FeiShuProperties properties,
                                RestTemplate restTemplate)
     {
         super(restTemplate);
