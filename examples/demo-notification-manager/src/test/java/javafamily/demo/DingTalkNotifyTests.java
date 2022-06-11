@@ -8,6 +8,7 @@ import club.javafamily.nf.request.card.feed.DingTalkFeedCardRequest;
 import club.javafamily.nf.request.card.multi.DingTalkMultiBtnCardRequest;
 import club.javafamily.nf.request.card.single.DingTalkSingleBtnCardRequest;
 import club.javafamily.nf.request.link.DingTalkLinkRequest;
+import club.javafamily.nf.request.link.LinkRequestContent;
 import club.javafamily.nf.request.markdown.DingTalkMarkDownRequest;
 import club.javafamily.nf.request.tags.BaseTextTagContentItem;
 import club.javafamily.nf.request.tags.CardBtn;
@@ -124,18 +125,18 @@ public class DingTalkNotifyTests {
 
    @Test
    void testNotifyMultiCard() {
-      String dataTime = "2022-06-05 23:00:00";
-      int shouldCount = 20, actualCount = 20;
-      String status = actualCount < shouldCount ? "异常" : "正常";
-
-      String content = "数据时次: " + dataTime
-              + "\n应收收据个数: " + shouldCount
-              + "\n实收数据个数: " + actualCount
-              + "\n监控状态: **" + status + "**";
+      String content = "测试 xxx 点位 (33.3, 107.7) 已经添加至用户点位库, 是否加入资源池?";
 
       final DingTalkMultiBtnCardRequest request
-              = DingTalkMultiBtnCardRequest.of("测试xxx数据监控", content,
-              new CardBtn());
+              = DingTalkMultiBtnCardRequest.of("点位审核", content,
+              CardBtn.builder()
+                      .title("接受")
+                      .actionURL("https://github.com/orgs/JavaFamilyClub/projects/3")
+                      .build(),
+              CardBtn.builder()
+                      .title("拒绝")
+                      .actionURL("https://github.com/JavaFamilyClub/javafamily-utils/actions")
+                      .build());
 
       final String response = dingTalkNotifyHandler.notify(request);
 
@@ -144,18 +145,22 @@ public class DingTalkNotifyTests {
 
    @Test
    void testNotifyFeedCard() {
-      String dataTime = "2022-06-05 23:00:00";
-      int shouldCount = 20, actualCount = 20;
-      String status = actualCount < shouldCount ? "异常" : "正常";
-
-      String content = "数据时次: " + dataTime
-              + "\n应收收据个数: " + shouldCount
-              + "\n实收数据个数: " + actualCount
-              + "\n监控状态: **" + status + "**";
-
       final DingTalkFeedCardRequest request
-              = DingTalkFeedCardRequest.of("测试xxx数据监控", content,
-              new CardBtn());
+              = DingTalkFeedCardRequest.of(LinkRequestContent.builder()
+                      .title("Notification Manager(测试)")
+                      .messageUrl("https://github.com/orgs/JavaFamilyClub/projects/3")
+                      .picUrl("https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png")
+              .build(),
+              LinkRequestContent.builder()
+                      .title("JavaFamily Utils")
+                      .messageUrl("https://github.com/JavaFamilyClub/javafamily-utils/actions")
+                      .picUrl("https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF")
+                      .build(),
+              LinkRequestContent.builder()
+                      .title("JavaFamily Parent Bom")
+                      .messageUrl("https://github.com/JavaFamilyClub/javafamily-parent/actions")
+                      .picUrl("https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF")
+                      .build());
 
       final String response = dingTalkNotifyHandler.notify(request);
 

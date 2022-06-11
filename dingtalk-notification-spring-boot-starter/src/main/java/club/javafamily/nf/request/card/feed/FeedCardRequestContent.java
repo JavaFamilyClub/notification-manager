@@ -21,12 +21,12 @@ public class FeedCardRequestContent implements Serializable {
      * feed links
      * @warn LinkRequestContent 只有 title, messageURL, picURL 生效
      */
-    private LinkRequestContent[] links;
+    private FeedCardRequestContentLink[] links;
 
     public FeedCardRequestContent() {
     }
 
-    public FeedCardRequestContent(LinkRequestContent[] links) {
+    public FeedCardRequestContent(FeedCardRequestContentLink[] links) {
        this.links = links;
     }
 

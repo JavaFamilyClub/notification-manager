@@ -17,7 +17,7 @@ public class DingTalkFeedCardRequest extends DingTalkNotifyRequest {
 
     private FeedCardRequestContent feedCard;
 
-    public static DingTalkFeedCardRequest of(LinkRequestContent...links) {
+    public static DingTalkFeedCardRequest of(FeedCardRequestContentLink...links) {
         final FeedCardRequestContent content = new FeedCardRequestContent(links);
 
         DingTalkFeedCardRequest request = new DingTalkFeedCardRequest();
