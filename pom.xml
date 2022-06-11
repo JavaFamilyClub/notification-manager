@@ -43,10 +43,6 @@
             <optional>true</optional>
         </dependency>
 
-        <dependency>
-            <groupId>club.javafamily</groupId>
-            <artifactId>notification-common</artifactId>
-        </dependency>
     </dependencies>
 
     <distributionManagement>

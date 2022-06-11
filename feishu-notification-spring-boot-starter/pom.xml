@@ -26,6 +26,11 @@
             <groupId>club.javafamily</groupId>
             <artifactId>javafamily-resttemplate-starter</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>notification-common</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
