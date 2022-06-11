@@ -38,6 +38,14 @@ public class DingTalkNotifyTests {
    }
 
    @Test
+   void testNotifyTextAt() {
+      final String response = dingTalkNotifyHandler.notify(
+              DingTalkTextNotifyRequest.of("这是一个测试数据!", false, "18829346477"));
+
+      System.out.println(response);
+   }
+
+   @Test
    void testNotifyPost() {
       final FeiShuPostNotifyRequest request = FeiShuPostNotifyRequest.of(
          "项目更新通知(测试)",
