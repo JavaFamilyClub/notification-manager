@@ -18,6 +18,7 @@
         <module>notification-common</module>
         <module>feishu-notification-spring-boot-starter</module>
         <module>dingtalk-notification-spring-boot-starter</module>
+        <module>ucloud-sms-notification-spring-boot-starter</module>
     </modules>
 
     <dependencyManagement>

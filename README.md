@@ -12,6 +12,7 @@
   * 富文本
   * 图片(delay)
   * 消息卡片
+
 * 钉钉
   * 普通文本
   * MarkDown
@@ -20,8 +21,11 @@
     * 单按钮
     * 多按钮
     * feed card
-* Tencent 短信(Current)
+
 * UCloud 短信
+
+* Tencent 短信(Current)
+
 * 邮箱
 
 

@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  club.javafamily.nf.sms.ucloud.conf.SmsSenderUCloudAutoConfiguration

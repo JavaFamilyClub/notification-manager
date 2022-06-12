@@ -8,17 +8,13 @@ import org.springframework.web.client.RestTemplate;
  * @date 2022/6/4 下午10:26
  * @description
  */
-public abstract class BaseWebHookNotifyHandler<NR extends NotifyRequest> implements NotifyHandler<NR> {
+public abstract class BaseWebHookNotifyHandler<NR extends NotifyRequest> implements NotifyHandler<NR, String> {
 
     protected final RestTemplate restTemplate;
 
     public BaseWebHookNotifyHandler(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
-
-//    public String getHookUrl() {
-//        throw new UnsupportedOperationException("Unsupported Operation!");
-//    }
 
     /**
      * getting robot webhook url
