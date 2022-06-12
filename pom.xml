@@ -20,6 +20,7 @@
         <module>dingtalk-notification-spring-boot-starter</module>
         <module>ucloud-sms-notification-spring-boot-starter</module>
         <module>tencent-sms-notification-spring-boot-starter</module>
+        <module>email-notification-spring-boot-starter</module>
     </modules>
 
     <dependencyManagement>
