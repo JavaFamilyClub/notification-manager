@@ -1,8 +1,10 @@
 package club.javafamily.nf.properties;
 
 import lombok.Data;
+import org.springframework.lang.NonNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -16,7 +18,10 @@ public class SmsTemplateInfo implements Serializable {
    private String templateId;
    private List<String> receiveUsers;
 
+   @NonNull
    public List<String> getSafeReceiveUsers() {
-      return new CopyOnWriteArrayList<>(receiveUsers);
+      return receiveUsers != null
+         ? new CopyOnWriteArrayList<>(receiveUsers)
+         : new ArrayList<>();
    }
 }

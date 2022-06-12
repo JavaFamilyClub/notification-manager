@@ -1,4 +1,4 @@
-package club.javafamily.nf.sms.ucloud.request;
+package club.javafamily.nf.request.sms;
 
 import club.javafamily.nf.request.NotifyRequest;
 import lombok.*;
@@ -16,6 +16,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SmsRequest implements NotifyRequest {
+
+   /**
+    * request endpoint
+    */
+   private String endPoint;
 
    /**
     * 命名空间 id
@@ -51,6 +56,9 @@ public class SmsRequest implements NotifyRequest {
     * 短信接受者
     */
    protected List<String> receiveUsers;
+
+   @Builder.Default
+   protected Integer timeout = 60;
 
    public List<String> getSafeReceiveUsers() {
       return new CopyOnWriteArrayList<>(receiveUsers);

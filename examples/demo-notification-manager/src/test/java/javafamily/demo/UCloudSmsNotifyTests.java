@@ -1,6 +1,7 @@
 package javafamily.demo;
 
 import club.javafamily.nf.sms.ucloud.service.UCloudSmsNotifyHandler;
+import cn.ucloud.usms.model.SendUSMSMessageResult;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,9 +21,11 @@ public class UCloudSmsNotifyTests {
 
    @Test
    void testNotify() {
-      uCloudSmsNotifyHandler.notify(
+      final SendUSMSMessageResult response = uCloudSmsNotifyHandler.notify(
          Collections.singletonList("18829346477"),
          "测试", "25#点位", "47");
+
+      System.out.println(response);
    }
 
 }

@@ -8,3 +8,28 @@ javafamily:
          hook-url: https://oapi.dingtalk.com/robot/send?access_token=5221404563667b04140f92e5820e6213fcdc2fe6a97560fe1f233fd468ef8e75
          security-type: keyword
          keyWord: 测试
+
+      sms:
+         ucloud:
+            publicKey: 4JAg5xosFnL4kuloVJc6Ro6FnHmWK
+            privateKey: LXjp6eF26SRKDKJyuWYm4u5zMckxwELi1DY3LVqiEbUr
+            projectId: org-moowmq
+            sign: 西安易辑
+            config: {
+               default: {
+                  templateId: UTN220509H4W128,
+                  receive-users: ['+8613630200546', 18829346477]
+               }
+            }
+#            #  请填写自己的短信平台信息, 这些信息已经过时
+#            publicKey: LVqiEb4kuLVqiEbl4JAg5xosFnL
+#            privateKey: SRK4u5zMcLXjp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
+#            projectId: org-javafamily
+#            sign: JavaFamily
+#            config: {
+#               default: {
+#                  templateId: UTN220301T1P215,
+#                  receive-users: ['+86136xxxxxxxx', 188xxxxxxxx]
+#               }
+#            }
+

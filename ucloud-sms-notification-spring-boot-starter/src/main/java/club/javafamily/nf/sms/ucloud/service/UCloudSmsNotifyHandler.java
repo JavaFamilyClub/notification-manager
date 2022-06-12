@@ -1,9 +1,10 @@
 package club.javafamily.nf.sms.ucloud.service;
 
+import club.javafamily.nf.constant.NotificationConstant;
 import club.javafamily.nf.properties.SmsTemplateInfo;
+import club.javafamily.nf.request.sms.SmsRequest;
 import club.javafamily.nf.service.NotifyHandler;
 import club.javafamily.nf.sms.ucloud.properties.SmsUCloudProperties;
-import club.javafamily.nf.sms.ucloud.request.SmsRequest;
 import club.javafamily.utils.common.MessageException;
 import cn.ucloud.common.pojo.Account;
 import cn.ucloud.usms.client.DefaultUSMSClient;
@@ -15,7 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 import org.springframework.util.CollectionUtils;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -35,14 +37,14 @@ public class UCloudSmsNotifyHandler implements NotifyHandler<SmsRequest, SendUSM
    public SendUSMSMessageResult notify(List<String> phoneNumbers,
                                        String...params)
    {
-      return notify(SmsUCloudProperties.DEFAULT, phoneNumbers,
+      return notify(NotificationConstant.DEFAULT, phoneNumbers,
          params == null ? null : Arrays.asList(params));
    }
 
    public SendUSMSMessageResult notify(List<String> phoneNumbers,
                                        List<String> params)
    {
-      return notify(SmsUCloudProperties.DEFAULT, phoneNumbers, params);
+      return notify(NotificationConstant.DEFAULT, phoneNumbers, params);
    }
 
    @Nullable
@@ -71,22 +73,14 @@ public class UCloudSmsNotifyHandler implements NotifyHandler<SmsRequest, SendUSM
          throw new MessageException("未配置模板: " + template);
       }
 
-      List<String> receiveUsers = Optional.ofNullable(
-         templateInfo.getSafeReceiveUsers()).orElse(new ArrayList<>());
+      List<String> receiveUsers = templateInfo.getSafeReceiveUsers();
 
       if(!CollectionUtils.isEmpty(phoneNumbers)) {
          receiveUsers.addAll(phoneNumbers);
       }
 
-      final SmsRequest request = SmsRequest.builder()
-         .namespaceId(properties.getProjectId())
-         .secretId(properties.getPublicKey())
-         .secretKey(properties.getPrivateKey())
-         .templateId(templateInfo.getTemplateId())
-         .sign(properties.getSign())
-         .params(params)
-         .receiveUsers(receiveUsers)
-         .build();
+      final SmsRequest request = properties.buildRequest(
+         template, phoneNumbers, params);
 
       return notify(request);
    }

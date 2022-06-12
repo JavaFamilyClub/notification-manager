@@ -1,4 +1,4 @@
-package club.javafamily.nf.sms.ucloud.properties;
+package club.javafamily.nf.sms.tencent.properties;
 
 import club.javafamily.nf.constant.NotificationConstant;
 import club.javafamily.nf.properties.SmsTemplateInfo;
@@ -16,15 +16,14 @@ import java.util.*;
  * @description
  */
 @Data
-@ConfigurationProperties(prefix = "javafamily.notify.sms.ucloud")
-public class SmsUCloudProperties {
+@ConfigurationProperties(prefix = "javafamily.notify.sms.tencent")
+public class SmsTencentProperties {
    @Builder.Default
-   private String appUrl = "https://api.ucloud.cn";
-   private String projectId;
-   private String publicKey;
-   private String privateKey;
+   private String appUrl = "sms.tencentcloudapi.com";
+   private String sdkAppId;
+   private String secretId;
+   private String secretKey;
 
-   // 短信签名
    private String sign;
 
    @Builder.Default
@@ -54,9 +53,9 @@ public class SmsUCloudProperties {
 
       return SmsRequest.builder()
          .endPoint(getAppUrl())
-         .namespaceId(getProjectId())
-         .secretId(getPublicKey())
-         .secretKey(getPrivateKey())
+         .namespaceId(getSdkAppId())
+         .secretId(getSecretId())
+         .secretKey(getSecretKey())
          .templateId(templateInfo.getTemplateId())
          .sign(getSign())
          .params(params)
