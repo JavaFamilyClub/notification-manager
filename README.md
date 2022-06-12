@@ -24,8 +24,8 @@
 
 * UCloud 短信
 
-* Tencent 短信(Current)
+* Tencent 短信
 
-* 邮箱
+* 邮箱(Current)
 
 
