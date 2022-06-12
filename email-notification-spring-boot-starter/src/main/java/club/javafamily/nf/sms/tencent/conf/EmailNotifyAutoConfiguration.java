@@ -1,10 +1,11 @@
 package club.javafamily.nf.sms.tencent.conf;
 
-import club.javafamily.nf.sms.tencent.properties.EmailProperties;
 import club.javafamily.nf.sms.tencent.service.EmailNotifyHandler;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
 
 /**
  * @author Jack Li
@@ -12,17 +13,21 @@ import org.springframework.context.annotation.Configuration;
  * @description
  */
 @Configuration(proxyBeanMethods = false)
-@EnableConfigurationProperties(EmailProperties.class)
+@ConditionalOnBean(JavaMailSender.class)
 public class EmailNotifyAutoConfiguration {
 
-   private final EmailProperties properties;
+   private final MailProperties mailProperties;
+   private final JavaMailSender javaMailSender;
 
-   public EmailNotifyAutoConfiguration(EmailProperties properties) {
-      this.properties = properties;
+   public EmailNotifyAutoConfiguration(MailProperties mailProperties,
+                                       JavaMailSender javaMailSender)
+   {
+      this.mailProperties = mailProperties;
+      this.javaMailSender = javaMailSender;
    }
 
    @Bean
-   public EmailNotifyHandler tencentSmsNotifyHandler() {
-      return new EmailNotifyHandler(mailSender, properties);
+   public EmailNotifyHandler emailNotifyHandler() {
+      return new EmailNotifyHandler(javaMailSender, mailProperties);
    }
 }
