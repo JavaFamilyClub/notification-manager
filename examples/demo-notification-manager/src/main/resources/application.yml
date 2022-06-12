@@ -11,19 +11,6 @@ javafamily:
          keyWord: 测试
 
       sms:
-         tencent:
-            #  请填写自己的短信平台信息, 这些信息已经过时
-            sdkAppId: 1234567899
-            secretId: LVqiEb4kuLVqiEbl4JAg5xosFnL
-            secretKey: SRK4u5zMcLXjp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
-            sign: JavaFamily
-            config: {
-               default: {
-                  templateId: 1111111,
-                  receive-users: ['+86136xxxxxxxx', 188xxxxxxxx]
-               }
-            }
-
          ucloud:
             publicKey: LVqqiEb4kuaLVqibEbl4JAg5xosFnL
             privateKey: SRKq4u5zaMcLXjvp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
@@ -36,3 +23,15 @@ javafamily:
                }
             }
 
+         tencent:
+            #  请填写自己的短信平台信息, 这些信息已经过时
+            sdkAppId: 1234567899
+            secretId: LVqiEb4kuLVqiEbl4JAg5xosFnL
+            secretKey: SRK4u5zMcLXjp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
+            sign: JavaFamily
+            config: {
+               default: {
+                  templateId: 1111111,
+                  receive-users: ['+86136xxxxxxxx', 188xxxxxxxx]
+               }
+            }
