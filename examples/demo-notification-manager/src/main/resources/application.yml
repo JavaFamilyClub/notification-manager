@@ -10,26 +10,28 @@ javafamily:
          keyWord: 测试
 
       sms:
-         ucloud:
-            publicKey: 4JAg5xosFnL4kuloVJc6Ro6FnHmWK
-            privateKey: LXjp6eF26SRKDKJyuWYm4u5zMckxwELi1DY3LVqiEbUr
-            projectId: org-moowmq
-            sign: 西安易辑
+         tencent:
+            #  请填写自己的短信平台信息, 这些信息已经过时
+            sdkAppId: 1234567899
+            secretId: LVqiEb4kuLVqiEbl4JAg5xosFnL
+            secretKey: SRK4u5zMcLXjp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
+            sign: JavaFamily
             config: {
                default: {
-                  templateId: UTN220509H4W128,
-                  receive-users: ['+8613630200546', 18829346477]
+                  templateId: 1111111,
+                  receive-users: ['+86136xxxxxxxx', 188xxxxxxxx]
                }
             }
-#            #  请填写自己的短信平台信息, 这些信息已经过时
-#            publicKey: LVqiEb4kuLVqiEbl4JAg5xosFnL
-#            privateKey: SRK4u5zMcLXjp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
-#            projectId: org-javafamily
-#            sign: JavaFamily
-#            config: {
-#               default: {
-#                  templateId: UTN220301T1P215,
-#                  receive-users: ['+86136xxxxxxxx', 188xxxxxxxx]
-#               }
-#            }
+
+         ucloud:
+            publicKey: LVqiEb4kuaLVqiEbl4JAg5xosFnL
+            privateKey: SRK4u5zaMcLXjp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
+            projectId: org-javafamily
+            sign: JavaFamily
+            config: {
+               default: {
+                  templateId: UTA2211111111111,
+                  receive-users: ['+86136xxxxxxxx', 188xxxxxxxx]
+               }
+            }
 
