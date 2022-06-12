@@ -22,7 +22,7 @@ public class SmsSenderUCloudAutoConfiguration {
    }
 
    @Bean
-   public UCloudSmsNotifyHandler smsSender() {
+   public UCloudSmsNotifyHandler uCloudSmsNotifyHandler() {
       return new UCloudSmsNotifyHandler(properties);
    }
 }

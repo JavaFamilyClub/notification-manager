@@ -47,6 +47,12 @@
       </dependency>
 
       <dependency>
+         <groupId>club.javafamily</groupId>
+         <artifactId>tencent-sms-notification-spring-boot-starter</artifactId>
+         <version>${notification.manager.version}</version>
+      </dependency>
+
+      <dependency>
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-configuration-processor</artifactId>
          <optional>true</optional>

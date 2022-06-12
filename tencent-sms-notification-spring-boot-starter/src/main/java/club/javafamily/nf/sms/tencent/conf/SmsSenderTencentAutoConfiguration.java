@@ -22,7 +22,7 @@ public class SmsSenderTencentAutoConfiguration {
    }
 
    @Bean
-   public TencentSmsNotifyHandler smsSender() {
+   public TencentSmsNotifyHandler tencentSmsNotifyHandler() {
       return new TencentSmsNotifyHandler(properties);
    }
 }

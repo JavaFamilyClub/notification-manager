@@ -36,22 +36,22 @@ public class TencentSmsNotifyHandler implements NotifyHandler<SmsRequest, SendSm
    }
 
    public SendSmsResponse notify(List<String> phoneNumbers,
-                                       String...params)
+                                 String...params)
    {
       return notify(NotificationConstant.DEFAULT, phoneNumbers,
          params == null ? null : Arrays.asList(params));
    }
 
    public SendSmsResponse notify(List<String> phoneNumbers,
-                                       List<String> params)
+                                 List<String> params)
    {
       return notify(NotificationConstant.DEFAULT, phoneNumbers, params);
    }
 
    @Nullable
    public SendSmsResponse notify(String template,
-                                       List<String> phoneNumbers,
-                                       String...params)
+                                 List<String> phoneNumbers,
+                                 String...params)
    {
       return notify(template, phoneNumbers,
          params == null ? null : Arrays.asList(params));
