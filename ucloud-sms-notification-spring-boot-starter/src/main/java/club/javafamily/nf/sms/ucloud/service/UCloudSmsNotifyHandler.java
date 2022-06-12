@@ -33,9 +33,25 @@ public class UCloudSmsNotifyHandler implements NotifyHandler<SmsRequest, SendUSM
    }
 
    public SendUSMSMessageResult notify(List<String> phoneNumbers,
+                                       String...params)
+   {
+      return notify(SmsUCloudProperties.DEFAULT, phoneNumbers,
+         params == null ? null : Arrays.asList(params));
+   }
+
+   public SendUSMSMessageResult notify(List<String> phoneNumbers,
                                        List<String> params)
    {
       return notify(SmsUCloudProperties.DEFAULT, phoneNumbers, params);
+   }
+
+   @Nullable
+   public SendUSMSMessageResult notify(String template,
+                                       List<String> phoneNumbers,
+                                       String...params)
+   {
+      return notify(template, phoneNumbers,
+         params == null ? null : Arrays.asList(params));
    }
 
    /**
