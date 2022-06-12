@@ -25,14 +25,14 @@ javafamily:
             }
 
          ucloud:
-            publicKey: LVqqiEb4kuaLVqiEbl4JAg5xosFnL
-            privateKey: SRKq4u5zaMcLXjp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
-            projectId: org-javafamily1
-            sign: JavaFamily1
+            publicKey: LVqqiEb4kuaLVqibEbl4JAg5xosFnL
+            privateKey: SRKq4u5zaMcLXjvp6eDKJyuWYmF26SRKDKJyLi1DY3Ur
+            projectId: javafamily-org
+            sign: JavaFamily
             config: {
                default: {
-                  templateId: UTA2111111111111,
-                  receive-users: ['+86136xxxxyyyy', 188xxxxxxxx]
+                  templateId: UTA1111111111111,
+                  receive-users: ['+86136xxxxyyyy', 188xxxxyyyy]
                }
             }
 
