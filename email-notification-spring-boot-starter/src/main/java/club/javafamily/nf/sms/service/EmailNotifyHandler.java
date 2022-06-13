@@ -14,6 +14,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
 
 import javax.activation.DataSource;
 import javax.mail.internet.MimeMessage;
@@ -134,8 +135,15 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
 
          helper.setFrom(request.getFrom());
          helper.setTo(request.getTo());
-         helper.setCc(request.getCc());
-         helper.setBcc(request.getBcc());
+
+         if(!ObjectUtils.isEmpty(request.getCc())) {
+            helper.setCc(request.getCc());
+         }
+
+         if(!ObjectUtils.isEmpty(request.getBcc())) {
+            helper.setBcc(request.getBcc());
+         }
+
          helper.setSubject(request.getSubject());
          helper.setText(request.getContent(), true);
 

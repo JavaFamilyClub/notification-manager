@@ -48,7 +48,7 @@ spring:
       port: 587
       default-encoding: utf-8
       username: javafamily.no-reply@outlook.com
-      password: ENC(Dei9QlGM89UdMyvlvEXVE6DX9aMKZBlRs+Rt5DXUpH3T10DsKRIUTpEOQDIT/I3j)
+      password: ENC(cwhBAwBz67CbPmagqWjrwC7kChhfYUlkTDt4XDz35kHGuyO8E8omp/X2y33EmwgR)
       properties:
          mail:
             smtp:

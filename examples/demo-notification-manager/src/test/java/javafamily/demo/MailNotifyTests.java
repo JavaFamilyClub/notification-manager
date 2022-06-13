@@ -1,6 +1,7 @@
 package javafamily.demo;
 
 import club.javafamily.nf.sms.service.EmailNotifyHandler;
+import org.jasypt.encryption.StringEncryptor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,9 @@ public class MailNotifyTests {
     @Autowired
     private EmailNotifyHandler emailNotifyHandler;
 
+    @Autowired
+    private StringEncryptor encryption;
+
     @Test
     void testNotifySimple() throws Exception {
         emailNotifyHandler.sendSimpleMailMessage("测试案例", "这是一个测试内容",
@@ -26,9 +30,17 @@ public class MailNotifyTests {
 
     @Test
     void testNotifyMime() throws Exception {
-        emailNotifyHandler.sendMimeMessage("测试案例", "这是一个测试内容",
+        emailNotifyHandler.sendMimeMessageWithLocaleFile("测试案例", "这是一个测试内容",
+                "E:\\Sunny\\react_资料\\代码资料.zip",
                 "243853974@qq.com", "18829346477@163.com");
 
         System.out.println("ok");
+    }
+
+    @Test
+    public void generatorEnvPassword() {
+        String password = "";
+
+        System.out.println(encryption.encrypt(password));
     }
 }
