@@ -4,6 +4,7 @@ import club.javafamily.nf.enums.NotifySupportTypeEnum;
 import club.javafamily.nf.request.NotifyRequest;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,32 +29,23 @@ public class NotifyService {
     /**
      * 通知
      * @param accept 接受的通知处理器
-     * @param request 请求参数
-     * @return 通知返回, 由于异步执行, 因此返回顺序与 {@param accepts} 的顺序不一定一致
+     * @param requests 请求参数
+     * @return 通知返回
      */
-    public Object notify(NotifySupportTypeEnum accept, NotifyRequest request) {
-        return notify(EnumSet.of(accept), request);
-    }
+    public Object notify(NotifySupportTypeEnum accept, NotifyRequest...requests) {
+        NotifyHandler processHandler = handlers.stream()
+                .filter(handler -> handler.isAccept(accept))
+                .findFirst()
+                .orElse(null);
 
-    /**
-     * 通知
-     * @param accepts 接受的通知处理器
-     * @param request 请求参数
-     * @return 通知返回, 由于异步执行, 因此返回顺序与 {@param accepts} 的顺序不一定一致
-     */
-    public Object notify(EnumSet<NotifySupportTypeEnum> accepts, NotifyRequest request) {
-        List<NotifyHandler> processHandlers = handlers.stream()
-                .filter(handler -> handler.isAccept(accepts))
-                .collect(Collectors.toList());
-
-        if(CollectionUtils.isEmpty(processHandlers)) {
+        if(processHandler == null) {
             throw new UnsupportedOperationException("没有可用的通知处理器!");
         }
 
-        return processHandlers.parallelStream()
-                .map(notifyHandler -> {
+        return Arrays.stream(requests)
+                .map(request -> {
                     try {
-                        return notifyHandler.notify(request);
+                        return processHandler.notify(request);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
