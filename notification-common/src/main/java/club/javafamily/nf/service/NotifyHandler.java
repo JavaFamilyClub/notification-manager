@@ -13,5 +13,5 @@ public interface NotifyHandler<NR extends NotifyRequest, RESPONSE> {
      * 通知
      * @param request 请求参数
      */
-    RESPONSE notify(NR request);
+    RESPONSE notify(NR request) throws Exception;
 }

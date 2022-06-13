@@ -13,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.CollectionUtils;
 
+import javax.activation.DataSource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
@@ -40,6 +41,7 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
    public void sendSimpleMailMessage(String subject,
                                      String content,
                                      String...to)
+           throws Exception
    {
       notify(EmailNotifyRequest.builder()
          .from(properties.getUsername())
@@ -53,6 +55,7 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
    public void sendMimeMessage(String subject,
                                String content,
                                String...to)
+           throws Exception
    {
       notify(EmailNotifyRequest.builder()
          .from(properties.getUsername())
@@ -63,14 +66,34 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
          .build());
    }
 
-   public void sendMimeMessage(String subject,
-                               String content,
-                               String filePath,
-                               String...to)
-      throws MessagingException
+   public void sendMimeMessageWithStream(String subject,
+                                         String content,
+                                         String attachName,
+                                         InputStream attachStream,
+                                         String...to)
+           throws Exception
    {
-      FileSystemResource file = new FileSystemResource(new File(filePath));
+      notify(EmailNotifyRequest.builder()
+              .from(properties.getUsername())
+              .to(to)
+              .type(MailType.MIME)
+              .subject(subject)
+              .content(content)
+              .attachments(Collections.singletonList(
+                      EmailAttachmentItem.builder()
+                              .name(attachName)
+                              .source(attachStream)
+                              .type(ResourceTypeEnum.STREAM)
+                              .build()))
+              .build());
+   }
 
+   public void sendMimeMessageWithLocaleFile(String subject,
+                                             String content,
+                                             String filePath,
+                                             String...to)
+           throws Exception
+   {
       notify(EmailNotifyRequest.builder()
          .from(properties.getUsername())
          .to(to)
@@ -79,8 +102,9 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
          .content(content)
          .attachments(Collections.singletonList(
             EmailAttachmentItem.builder()
-               .name(file.getFilename())
-               .source(file)
+               .name(new File(filePath).getName())
+               .source(filePath)
+               .type(ResourceTypeEnum.LOCALE_FILE_PATH)
                .build()))
          .build());
    }
@@ -91,7 +115,7 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
     * @return 邮件发送响应
     */
    @Override
-   public Void notify(EmailNotifyRequest request) {
+   public Void notify(EmailNotifyRequest request) throws Exception {
       if (request.getType() == MailType.SIMPLE) {
          sendSimpleEmail(request);
       } else {
@@ -101,7 +125,7 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
       return null;
    }
 
-   private void sendMimeEmail(EmailNotifyRequest request) {
+   private void sendMimeEmail(EmailNotifyRequest request) throws Exception {
       MimeMessage message = mailSender.createMimeMessage();
 
       try {
@@ -116,7 +140,7 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
 
          if(!CollectionUtils.isEmpty(request.getInlineResource())) {
             for(EmailInlineResourceItem item : request.getInlineResource()) {
-               Resource resource = buildResource(item);
+               Resource resource = buildResource(item.getType(), item.getSource());
 
                if(resource == null) {
                   throw new MessageException("Inline resource getting failed: " + item);
@@ -128,49 +152,73 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
 
          if(!CollectionUtils.isEmpty(request.getAttachments())) {
             for (EmailAttachmentItem attachment : request.getAttachments()) {
-               helper.addAttachment(
-                  attachment.getName(), attachment.getSource());
+               if(attachment.getType() == null) {
+                  if(attachment.getSource() instanceof InputStreamSource) {
+                     helper.addAttachment(
+                             attachment.getName(), (InputStreamSource) attachment.getSource());
+                  }
+                  else if(attachment.getSource() instanceof DataSource) {
+                     helper.addAttachment(
+                             attachment.getName(), (DataSource) attachment.getSource());
+                  }
+                  else {
+                     throw new MessageException("不支持的 Source 类型: " + attachment.getSource());
+                  }
+               }
+               else {
+                  Resource resource = buildResource(attachment.getType(), attachment.getSource());
+
+                  if(resource != null) {
+                     helper.addAttachment(attachment.getName(), resource);
+                  }
+               }
             }
          }
 
          mailSender.send(message);
       }
+      catch (MessageException e) {
+         throw e;
+      }
       catch (Exception e) {
          log.error("Send email failed!", e);
+         throw e;
       }
    }
 
-   private Resource buildResource(EmailInlineResourceItem item)
+   private Resource buildResource(ResourceTypeEnum type, Object source)
       throws MalformedURLException
    {
-      if(item.getType() == ResourceTypeEnum.LOCALE_FILE
-         && item.getSource() instanceof File)
+      if(type == ResourceTypeEnum.LOCALE_FILE
+         && source instanceof File)
       {
-         return new FileSystemResource((File) item.getSource());
+         return new FileSystemResource((File) source);
       }
-      else if(item.getType() == ResourceTypeEnum.LOCALE_FILE_PATH
-         && item.getSource() instanceof String)
+      else if(type == ResourceTypeEnum.LOCALE_FILE_PATH
+         && source instanceof String)
       {
-         return new FileSystemResource(new File((String) item.getSource()));
+         return new FileSystemResource(new File((String) source));
       }
-      else if(item.getType() == ResourceTypeEnum.URL
-         && item.getSource() instanceof String)
+      else if(type == ResourceTypeEnum.URL
+         && source instanceof String)
       {
-         return new UrlResource((String) item.getSource());
+         return new UrlResource((String) source);
       }
-      else if(item.getType() == ResourceTypeEnum.STREAM
-         && item.getSource() instanceof InputStream)
+      else if(type == ResourceTypeEnum.STREAM
+         && source instanceof InputStream)
       {
-         return new InputStreamResource((InputStream) item.getSource());
+         return new InputStreamResource((InputStream) source);
       }
-      else if(item.getType() == ResourceTypeEnum.BYTE_ARRAY
-         && item.getSource() instanceof byte[])
+      else if(type == ResourceTypeEnum.BYTE_ARRAY
+         && source instanceof byte[])
       {
-         byte[] bytes = (byte[]) item.getSource();
+         byte[] bytes = (byte[]) source;
          return new InputStreamResource(new ByteArrayInputStream(bytes));
       }
 
-      return null;
+      log.error("No match source type! type: {}, source: {}", type, source);
+
+      throw new MessageException("不支持的 Source 类型! type:" + type + ", source: " + source);
    }
 
    private void sendSimpleEmail(EmailNotifyRequest request) {

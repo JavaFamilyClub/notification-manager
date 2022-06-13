@@ -1,5 +1,6 @@
 package club.javafamily.nf.sms.tencent.request;
 
+import club.javafamily.nf.sms.tencent.enums.ResourceTypeEnum;
 import lombok.*;
 import org.springframework.core.io.InputStreamSource;
 
@@ -18,5 +19,7 @@ public class EmailAttachmentItem implements Serializable {
 
    private String name;
 
-   private InputStreamSource source;
+   private Object source;
+
+   private ResourceTypeEnum type;
 }

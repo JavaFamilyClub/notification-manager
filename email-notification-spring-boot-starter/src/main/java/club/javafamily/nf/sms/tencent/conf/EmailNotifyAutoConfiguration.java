@@ -13,7 +13,10 @@ import org.springframework.mail.javamail.JavaMailSender;
  * @description
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnBean(JavaMailSender.class)
+@ConditionalOnBean({
+        JavaMailSender.class,
+        MailProperties.class
+})
 public class EmailNotifyAutoConfiguration {
 
    private final MailProperties mailProperties;
