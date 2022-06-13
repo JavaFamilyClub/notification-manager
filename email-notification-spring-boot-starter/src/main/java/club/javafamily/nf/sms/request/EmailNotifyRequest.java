@@ -1,7 +1,7 @@
-package club.javafamily.nf.sms.tencent.request;
+package club.javafamily.nf.sms.request;
 
 import club.javafamily.nf.request.NotifyRequest;
-import club.javafamily.nf.sms.tencent.enums.MailType;
+import club.javafamily.nf.sms.enums.MailType;
 import lombok.*;
 
 import java.util.List;

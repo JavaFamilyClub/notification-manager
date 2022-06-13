@@ -1,6 +1,6 @@
 package javafamily.demo;
 
-import club.javafamily.nf.sms.tencent.service.TencentSmsNotifyHandler;
+import club.javafamily.nf.sms.service.TencentSmsNotifyHandler;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,7 @@
-package club.javafamily.nf.sms.tencent.request;
+package club.javafamily.nf.sms.request;
 
-import club.javafamily.nf.sms.tencent.enums.ResourceTypeEnum;
+import club.javafamily.nf.sms.enums.ResourceTypeEnum;
 import lombok.*;
-import org.springframework.core.io.InputStreamSource;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
-package club.javafamily.nf.sms.tencent.conf;
+package club.javafamily.nf.sms.conf;
 
-import club.javafamily.nf.sms.tencent.properties.SmsTencentProperties;
-import club.javafamily.nf.sms.tencent.service.TencentSmsNotifyHandler;
+import club.javafamily.nf.sms.properties.SmsTencentProperties;
+import club.javafamily.nf.sms.service.TencentSmsNotifyHandler;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

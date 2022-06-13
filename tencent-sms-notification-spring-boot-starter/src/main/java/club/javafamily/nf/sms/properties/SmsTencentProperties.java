@@ -1,4 +1,4 @@
-package club.javafamily.nf.sms.tencent.properties;
+package club.javafamily.nf.sms.properties;
 
 import club.javafamily.nf.constant.NotificationConstant;
 import club.javafamily.nf.properties.SmsTemplateInfo;

@@ -1,6 +1,6 @@
 package javafamily.demo;
 
-import club.javafamily.nf.sms.tencent.service.EmailNotifyHandler;
+import club.javafamily.nf.sms.service.EmailNotifyHandler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

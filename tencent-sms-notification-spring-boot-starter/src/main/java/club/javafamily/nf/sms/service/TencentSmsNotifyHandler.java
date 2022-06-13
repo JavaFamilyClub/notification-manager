@@ -1,10 +1,10 @@
-package club.javafamily.nf.sms.tencent.service;
+package club.javafamily.nf.sms.service;
 
 import club.javafamily.nf.constant.NotificationConstant;
 import club.javafamily.nf.properties.SmsTemplateInfo;
 import club.javafamily.nf.request.sms.SmsRequest;
 import club.javafamily.nf.service.NotifyHandler;
-import club.javafamily.nf.sms.tencent.properties.SmsTencentProperties;
+import club.javafamily.nf.sms.properties.SmsTencentProperties;
 import club.javafamily.utils.common.MessageException;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;

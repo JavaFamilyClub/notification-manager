@@ -1,4 +1,4 @@
-package club.javafamily.nf.sms.tencent.enums;
+package club.javafamily.nf.sms.enums;
 
 /**
  * @author Jack Li

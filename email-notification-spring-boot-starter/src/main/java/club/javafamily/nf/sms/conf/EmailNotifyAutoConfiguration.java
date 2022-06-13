@@ -1,6 +1,6 @@
-package club.javafamily.nf.sms.tencent.conf;
+package club.javafamily.nf.sms.conf;
 
-import club.javafamily.nf.sms.tencent.service.EmailNotifyHandler;
+import club.javafamily.nf.sms.service.EmailNotifyHandler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.context.annotation.Bean;

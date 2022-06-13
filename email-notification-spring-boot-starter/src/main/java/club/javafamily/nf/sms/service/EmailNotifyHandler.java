@@ -1,9 +1,11 @@
-package club.javafamily.nf.sms.tencent.service;
+package club.javafamily.nf.sms.service;
 
 import club.javafamily.nf.service.NotifyHandler;
-import club.javafamily.nf.sms.tencent.enums.MailType;
-import club.javafamily.nf.sms.tencent.enums.ResourceTypeEnum;
-import club.javafamily.nf.sms.tencent.request.*;
+import club.javafamily.nf.sms.enums.MailType;
+import club.javafamily.nf.sms.enums.ResourceTypeEnum;
+import club.javafamily.nf.sms.request.EmailAttachmentItem;
+import club.javafamily.nf.sms.request.EmailInlineResourceItem;
+import club.javafamily.nf.sms.request.EmailNotifyRequest;
 import club.javafamily.utils.common.MessageException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
@@ -14,7 +16,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.CollectionUtils;
 
 import javax.activation.DataSource;
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.net.MalformedURLException;

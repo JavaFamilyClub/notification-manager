@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  club.javafamily.nf.sms.tencent.conf.SmsSenderTencentAutoConfiguration
+  club.javafamily.nf.sms.conf.SmsSenderTencentAutoConfiguration
