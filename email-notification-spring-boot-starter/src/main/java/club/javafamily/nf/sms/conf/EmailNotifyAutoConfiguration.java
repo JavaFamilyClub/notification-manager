@@ -2,6 +2,7 @@ package club.javafamily.nf.sms.conf;
 
 import club.javafamily.nf.sms.service.EmailNotifyHandler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
  * @description
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnBean({
+@ConditionalOnClass({
         JavaMailSender.class,
         MailProperties.class
 })
