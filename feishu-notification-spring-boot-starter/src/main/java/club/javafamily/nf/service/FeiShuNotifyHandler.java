@@ -1,5 +1,6 @@
 package club.javafamily.nf.service;
 
+import club.javafamily.nf.enums.NotifySupportTypeEnum;
 import club.javafamily.nf.properties.FeiShuProperties;
 import club.javafamily.nf.properties.WebHookProperties;
 import club.javafamily.nf.request.FeiShuNotifyRequest;
@@ -30,6 +31,16 @@ public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRe
     @Override
     public String getHookUrl() {
         return properties.getHookUrl();
+    }
+
+    /**
+     * 自身的类型
+     *
+     * @return NotifySupportTypeEnum
+     */
+    @Override
+    public NotifySupportTypeEnum selfType() {
+        return NotifySupportTypeEnum.FEI_SHU;
     }
 
     @Override

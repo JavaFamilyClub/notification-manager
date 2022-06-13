@@ -21,6 +21,7 @@
         <module>ucloud-sms-notification-spring-boot-starter</module>
         <module>tencent-sms-notification-spring-boot-starter</module>
         <module>email-notification-spring-boot-starter</module>
+        <module>notification-manager-all</module>
     </modules>
 
     <dependencyManagement>

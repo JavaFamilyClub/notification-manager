@@ -1,6 +1,7 @@
 package club.javafamily.nf.sms.service;
 
 import club.javafamily.nf.constant.NotificationConstant;
+import club.javafamily.nf.enums.NotifySupportTypeEnum;
 import club.javafamily.nf.properties.SmsTemplateInfo;
 import club.javafamily.nf.request.sms.SmsRequest;
 import club.javafamily.nf.service.NotifyHandler;
@@ -85,6 +86,16 @@ public class TencentSmsNotifyHandler implements NotifyHandler<SmsRequest, SendSm
          = properties.buildRequest(template, receiveUsers, params);
 
       return notify(request);
+   }
+
+   /**
+    * 自身的类型
+    *
+    * @return NotifySupportTypeEnum
+    */
+   @Override
+   public NotifySupportTypeEnum selfType() {
+      return NotifySupportTypeEnum.SMS_TENCENT;
    }
 
    /**

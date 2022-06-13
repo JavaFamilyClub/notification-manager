@@ -1,6 +1,7 @@
 package club.javafamily.nf.sms.ucloud.service;
 
 import club.javafamily.nf.constant.NotificationConstant;
+import club.javafamily.nf.enums.NotifySupportTypeEnum;
 import club.javafamily.nf.properties.SmsTemplateInfo;
 import club.javafamily.nf.request.sms.SmsRequest;
 import club.javafamily.nf.service.NotifyHandler;
@@ -83,6 +84,16 @@ public class UCloudSmsNotifyHandler implements NotifyHandler<SmsRequest, SendUSM
          template, phoneNumbers, params);
 
       return notify(request);
+   }
+
+   /**
+    * 自身的类型
+    *
+    * @return NotifySupportTypeEnum
+    */
+   @Override
+   public NotifySupportTypeEnum selfType() {
+      return NotifySupportTypeEnum.SMS_UCLOUD;
    }
 
    @Nullable

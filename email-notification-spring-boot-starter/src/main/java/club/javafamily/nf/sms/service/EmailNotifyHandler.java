@@ -1,5 +1,6 @@
 package club.javafamily.nf.sms.service;
 
+import club.javafamily.nf.enums.NotifySupportTypeEnum;
 import club.javafamily.nf.service.NotifyHandler;
 import club.javafamily.nf.sms.enums.MailType;
 import club.javafamily.nf.sms.enums.ResourceTypeEnum;
@@ -28,7 +29,7 @@ import java.util.Collections;
  * @description
  */
 @Slf4j
-public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Void> {
+public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Boolean> {
 
    private final JavaMailSender mailSender;
    private final MailProperties properties;
@@ -112,19 +113,29 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Voi
    }
 
    /**
+    * 自身的类型
+    *
+    * @return NotifySupportTypeEnum
+    */
+   @Override
+   public NotifySupportTypeEnum selfType() {
+      return NotifySupportTypeEnum.EMAIL;
+   }
+
+   /**
     * 邮件短信
     * @param request 请求参数
     * @return 邮件发送响应
     */
    @Override
-   public Void notify(EmailNotifyRequest request) throws Exception {
+   public Boolean notify(EmailNotifyRequest request) throws Exception {
       if (request.getType() == MailType.SIMPLE) {
          sendSimpleEmail(request);
       } else {
          sendMimeEmail(request);
       }
 
-      return null;
+      return true;
    }
 
    private void sendMimeEmail(EmailNotifyRequest request) throws Exception {

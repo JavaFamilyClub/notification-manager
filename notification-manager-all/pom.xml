@@ -9,27 +9,37 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>feishu-notification-spring-boot-starter</artifactId>
+    <artifactId>notification-manager-all</artifactId>
+
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>${project.artifactId}</description>
-    <url>https://github.com/JavaFamilyClub/notification-manager/tree/main/feishu-notification-spring-boot-starter</url>
+    <url>https://github.com/JavaFamilyClub/notification-manager/tree/main/notification-manager-all</url>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <scope>provided</scope>
+            <groupId>club.javafamily</groupId>
+            <artifactId>feishu-notification-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
             <groupId>club.javafamily</groupId>
-            <artifactId>javafamily-resttemplate-starter</artifactId>
+            <artifactId>dingtalk-notification-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
             <groupId>club.javafamily</groupId>
-            <artifactId>notification-common</artifactId>
+            <artifactId>ucloud-sms-notification-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>tencent-sms-notification-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>email-notification-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

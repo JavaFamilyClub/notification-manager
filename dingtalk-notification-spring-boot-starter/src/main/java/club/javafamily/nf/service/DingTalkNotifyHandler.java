@@ -1,5 +1,6 @@
 package club.javafamily.nf.service;
 
+import club.javafamily.nf.enums.NotifySupportTypeEnum;
 import club.javafamily.nf.properties.DingTalkProperties;
 import club.javafamily.nf.request.NotifyRequest;
 import org.springframework.web.client.RestTemplate;
@@ -23,6 +24,16 @@ public class DingTalkNotifyHandler extends BaseWebHookNotifyHandler<NotifyReques
     @Override
     public String getHookUrl() {
         return properties.getHookUrl();
+    }
+
+    /**
+     * 自身的类型
+     *
+     * @return NotifySupportTypeEnum
+     */
+    @Override
+    public NotifySupportTypeEnum selfType() {
+        return NotifySupportTypeEnum.DING_TALK;
     }
 
     @Override
