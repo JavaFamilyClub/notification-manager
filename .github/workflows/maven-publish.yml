@@ -30,7 +30,13 @@ jobs:
         server-username: MAVEN_USERNAME
         server-password: MAVEN_PASSWORD
 
-    - name: Publish to GitHub Packages Apache Maven
+    - name: Publish components
+      run: mvn clean deploy
+      env:
+        MAVEN_USERNAME: ${{ secrets.MAVEN_CENTER_USER_NAME }}
+        MAVEN_PASSWORD: ${{ secrets.MAVEN_CENTER_PASSWORD }}
+
+    - name: Publish bom
       run: mvn clean deploy
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_CENTER_USER_NAME }}
