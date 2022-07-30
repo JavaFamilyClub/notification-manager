@@ -153,10 +153,6 @@
                             </goals>
                         </execution>
                     </executions>
-                    <configuration>
-                        <keyname>46A46638E7A4C988603988FC9A698D0385DD4339</keyname>
-                        <passphrase>dreamLi0812!@#</passphrase>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

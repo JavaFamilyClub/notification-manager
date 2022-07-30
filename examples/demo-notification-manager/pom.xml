@@ -16,6 +16,21 @@
       <notification.manager.version>2.3.2-SNAPSHOT</notification.manager.version>
    </properties>
 
+   <repositories>
+      <repository>
+         <id>maven-central</id>
+         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+         <releases>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+         </snapshots>
+      </repository>
+   </repositories>
+
    <dependencies>
       <dependency>
          <groupId>org.springframework.boot</groupId>
