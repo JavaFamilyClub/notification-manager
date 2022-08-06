@@ -1,3 +1,7 @@
+jasypt:
+   encryptor:
+      password: ${JF_JASYPT_ENCRYPTOR}
+
 javafamily:
    notify:
       feishu:
@@ -37,10 +41,6 @@ javafamily:
                }
             }
 
-jasypt:
-   encryptor:
-      password: ${JF_JASYPT_ENCRYPTOR}
-
 spring:
    # Mail Config
    mail:
@@ -48,7 +48,7 @@ spring:
       port: 587
       default-encoding: utf-8
       username: javafamily.no-reply@outlook.com
-      password: ENC(cwhBAwBz67CbPmagqWjrwC7kChhfYUlkTDt4XDz35kHGuyO8E8omp/X2y33EmwgR)
+      password: ENC(VV/Dsvgy4H4vs0eNVwvKdb1ovWmnzvlgs8/qTE+6ldJ2rEFWYD3hpsReiGFljN+2oq+P3YX+UkuE0AnkYP/MAQ==)
       properties:
          mail:
             smtp:
