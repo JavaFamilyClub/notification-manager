@@ -1,4 +1,5 @@
 # 飞书通知器
+
 > 基于 WebHook 的飞书机器人通知
 
 ## 1. 引入依赖
@@ -111,8 +112,7 @@ public class FeiShuNotifyTests {
       final FeiShuCardNotifyRequest request
          = FeiShuCardNotifyRequest.of("测试xxx数据监控", content,
          "立即前往系统查看 :玫瑰:️ ✅ \uD83D\uDDA5️",
-         "https://github.com/orgs/JavaFamilyClub/projects/3",
-         null);
+         "https://github.com/orgs/JavaFamilyClub/projects/3");
 
       final String response = feiShuNotifyHandler.notify(request);
 
