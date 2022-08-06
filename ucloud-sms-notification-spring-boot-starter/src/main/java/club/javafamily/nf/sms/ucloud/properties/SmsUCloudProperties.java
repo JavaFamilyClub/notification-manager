@@ -4,8 +4,7 @@ import club.javafamily.nf.constant.NotificationConstant;
 import club.javafamily.nf.properties.SmsTemplateInfo;
 import club.javafamily.nf.request.sms.SmsRequest;
 import club.javafamily.utils.common.MessageException;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.*;
@@ -18,7 +17,6 @@ import java.util.*;
 @Data
 @ConfigurationProperties(prefix = "javafamily.notify.sms.ucloud")
 public class SmsUCloudProperties {
-   @Builder.Default
    private String appUrl = "https://api.ucloud.cn";
    private String projectId;
    private String publicKey;
@@ -27,7 +25,6 @@ public class SmsUCloudProperties {
    // 短信签名
    private String sign;
 
-   @Builder.Default
    private Integer timeout = 60;
 
    private Map<String, SmsTemplateInfo> config;

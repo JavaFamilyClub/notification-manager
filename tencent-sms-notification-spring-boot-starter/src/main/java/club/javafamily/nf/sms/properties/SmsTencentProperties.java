@@ -4,8 +4,7 @@ import club.javafamily.nf.constant.NotificationConstant;
 import club.javafamily.nf.properties.SmsTemplateInfo;
 import club.javafamily.nf.request.sms.SmsRequest;
 import club.javafamily.utils.common.MessageException;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.*;
@@ -18,7 +17,6 @@ import java.util.*;
 @Data
 @ConfigurationProperties(prefix = "javafamily.notify.sms.tencent")
 public class SmsTencentProperties {
-   @Builder.Default
    private String appUrl = "sms.tencentcloudapi.com";
    private String sdkAppId;
    private String secretId;
@@ -26,7 +24,6 @@ public class SmsTencentProperties {
 
    private String sign;
 
-   @Builder.Default
    private Integer timeout = 60;
 
    private Map<String, SmsTemplateInfo> config;
