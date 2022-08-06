@@ -14,6 +14,10 @@
     <description>${project.artifactId}</description>
     <url>https://github.com/JavaFamilyClub/notification-manager</url>
 
+    <properties>
+        <module.verson>2.3.2-SNAPSHOT</module.verson>
+    </properties>
+
     <modules>
         <module>notification-common</module>
         <module>feishu-notification-spring-boot-starter</module>
@@ -29,7 +33,7 @@
             <dependency>
                 <groupId>club.javafamily</groupId>
                 <artifactId>notification-common</artifactId>
-                <version>${project.version}</version>
+                <version>${module.verson}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
