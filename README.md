@@ -7,13 +7,13 @@
 
 详情请参考 [Notification-Manager Roadmap](https://github.com/orgs/JavaFamilyClub/projects/3/views/1)
 
-* 飞书
+* [飞书](./feishu-notification-spring-boot-starter)
   * 普通文本
   * 富文本
   * 图片(delay)
   * 消息卡片
 
-* 钉钉
+* [钉钉](./dingtalk-notification-spring-boot-starter)
   * 普通文本
   * MarkDown
   * Link
@@ -22,11 +22,14 @@
     * 多按钮
     * feed card
 
-* UCloud 短信
+* [UCloud 短信](./ucloud-sms-notification-spring-boot-starter)
+> UCloud 短信通知
 
-* Tencent 短信
+* [Tencent 短信](./tencent-sms-notification-spring-boot-starter)
+> 腾讯短信通知
 
-* 邮箱
+* [邮箱](./email-notification-spring-boot-starter)
+> 邮箱通知
 
 # 3. 示例代码
 

@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>feishu-notification-spring-boot-starter</artifactId>
+    <version>2.3.2-beta</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>${project.artifactId}</description>
