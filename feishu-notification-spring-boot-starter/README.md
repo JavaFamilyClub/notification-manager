@@ -3,6 +3,35 @@
 
 ## 1. 引入依赖
 
+* Maven Snapshot 仓库
+
+``` xml
+   <repositories>
+      <repository>
+         <id>maven-central</id>
+         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+         <releases>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+         </snapshots>
+      </repository>
+   </repositories>
+
+      <dependencies>
+         <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>feishu-notification-spring-boot-starter</artifactId>
+            <version>2.3.2-SNAPSHOT</version>
+         </dependency>
+      </dependencies>
+```
+
+* Maven Central Release 仓库(发布中)
+
 ``` xml
 <dependency>
    <groupId>club.javafamily</groupId>
