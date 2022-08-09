@@ -5,6 +5,8 @@ import org.springframework.http.*;
 import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
+
 /**
  * @author Jack Li
  * @date 2022/6/4 下午10:26
@@ -34,6 +36,7 @@ public abstract class BaseWebHookNotifyHandler<NR extends NotifyRequest> impleme
     {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
         HttpEntity<?> entity = new HttpEntity<>(request, headers);
 
