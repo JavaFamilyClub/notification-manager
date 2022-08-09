@@ -38,7 +38,7 @@ public class DingTalkNotifyHandler extends BaseWebHookNotifyHandler<NotifyReques
 
     @Override
     public String notify(NotifyRequest request) {
-        return restTemplate.postForObject(
+        return postForJson(
            properties.getHookUrl(), request, String.class);
     }
 }

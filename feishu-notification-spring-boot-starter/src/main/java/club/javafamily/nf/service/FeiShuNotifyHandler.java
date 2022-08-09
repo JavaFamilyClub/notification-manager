@@ -2,9 +2,8 @@ package club.javafamily.nf.service;
 
 import club.javafamily.nf.enums.NotifySupportTypeEnum;
 import club.javafamily.nf.properties.FeiShuProperties;
-import club.javafamily.nf.properties.WebHookProperties;
-import club.javafamily.nf.request.FeiShuNotifyRequest;
 import club.javafamily.nf.request.FeiShuImageNotifyRequest;
+import club.javafamily.nf.request.FeiShuNotifyRequest;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestTemplate;
 
@@ -61,7 +60,6 @@ public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRe
             }
         }
 
-        return restTemplate.postForObject(
-           properties.getHookUrl(), request, String.class);
+        return postForJson(properties.getHookUrl(), request, String.class);
     }
 }
