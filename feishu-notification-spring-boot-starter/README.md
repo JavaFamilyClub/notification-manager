@@ -52,6 +52,7 @@ javafamily:
    notify:
       feishu:
          hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/09973b31-0c1a-4924-b900-6173bb429644
+         enabled: true  # 是否开启通知, 用于不同环境下的区分(开发, 测试, 生产), 默认为 true
 ```
 
 ### 2.2 restTemplate 配置
