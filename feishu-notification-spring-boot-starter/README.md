@@ -4,7 +4,7 @@
 
 ## 1. 引入依赖
 
-* Maven Snapshot 仓库
+* Maven Central Snapshot 仓库
 
 ``` xml
    <repositories>
@@ -22,16 +22,16 @@
       </repository>
    </repositories>
 
-      <dependencies>
-         <dependency>
-            <groupId>club.javafamily</groupId>
-            <artifactId>feishu-notification-spring-boot-starter</artifactId>
-            <version>2.3.2-SNAPSHOT</version>
-         </dependency>
-      </dependencies>
+   <dependencies>
+      <dependency>
+         <groupId>club.javafamily</groupId>
+         <artifactId>feishu-notification-spring-boot-starter</artifactId>
+         <version>2.3.2-SNAPSHOT</version>
+      </dependency>
+   </dependencies>
 ```
 
-* Maven Central Release 仓库(发布中)
+* Maven Central Release 仓库(发布审核中)
 
 ``` xml
 <dependency>
@@ -43,14 +43,38 @@
 
 ## 2. 配置
 
+### 2.1 飞书通知配置
+
 > 创建你自己的飞书 WebHook 机器人, 在 application.yml 中配置飞书通知的 webhook 地址
 
 ```yml
 javafamily:
    notify:
       feishu:
-         hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
+         hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/09973b31-0c1a-4924-b900-6173bb429644
 ```
+
+### 2.2 restTemplate 配置
+
+> 发送 webhook 请求底层是通过封装的 `resttemplate` 进行请求,
+> 而 `restTemplate` 是通过 [javafamily-resttemplate-starter](https://github.com/JavaFamilyClub/javafamily-core/tree/main/javafamily-resttemplate-starter)
+> 提供组件服务与配置, 因此, `feishu-notification-spring-boot-starter` 天生支持 `javafamily-resttemplate-starter` 组件的全部配置.
+> 如: 配置代理
+
+``` yml
+javafamily:
+   notify:
+      feishu:
+         hook-url: http://open.feishu.cn/open-apis/bot/v2/hook/09973b31-0c1a-4924-b900-6173bb429644
+
+   http:
+      proxy:
+         type: HTTP
+         host: 192.168.3.26
+         port: 9999
+```
+
+> 更多 `restTemplate` 的配置请参考: [javafamily-resttemplate-starter](https://github.com/JavaFamilyClub/javafamily-core/tree/main/javafamily-resttemplate-starter)
 
 ## 3. 注入 `FeiShuNotifyHandler`
 
