@@ -2,6 +2,7 @@ package club.javafamily.nf.conf;
 
 import club.javafamily.nf.properties.FeiShuProperties;
 import club.javafamily.nf.service.FeiShuNotifyHandler;
+import club.javafamily.nf.service.NoOpFeiShuNotifyHandler;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,19 +17,23 @@ import org.springframework.web.client.RestTemplate;
 @EnableConfigurationProperties(FeiShuProperties.class)
 public class FeiShuNotificationAutoConfiguration {
 
-   private final FeiShuProperties feiShuProperties;
+   private final FeiShuProperties properties;
    private final RestTemplate restTemplate;
 
    public FeiShuNotificationAutoConfiguration(FeiShuProperties feiShuProperties,
                                               RestTemplate restTemplate)
    {
-      this.feiShuProperties = feiShuProperties;
+      this.properties = feiShuProperties;
       this.restTemplate = restTemplate;
    }
 
    @Bean
    public FeiShuNotifyHandler feiShuNotifyHandler() {
-      return new FeiShuNotifyHandler(feiShuProperties, restTemplate);
+      if(properties.getEnabled() == null || properties.getEnabled()) {
+         return new FeiShuNotifyHandler(properties, restTemplate);
+      }
+
+      return new NoOpFeiShuNotifyHandler(properties);
    }
 
 }

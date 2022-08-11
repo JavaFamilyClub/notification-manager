@@ -12,6 +12,11 @@ import lombok.Data;
 @Data
 public class WebHookProperties {
     /**
+     * 是否启用通知
+     */
+    protected Boolean enabled = true;
+
+    /**
      * WehbHook url
      */
     protected String hookUrl;

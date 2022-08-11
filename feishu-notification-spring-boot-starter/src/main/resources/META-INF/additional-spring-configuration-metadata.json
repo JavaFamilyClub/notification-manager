@@ -8,6 +8,13 @@
    ],
    "properties": [
       {
+         "name": "javafamily.notify.feishu.enabled",
+         "type": "java.lang.Boolean",
+         "description": "是否启用.",
+         "sourceType": "club.javafamily.nf.properties.FeiShuProperties",
+         "defaultValue": true
+      },
+      {
          "name": "javafamily.notify.feishu.hookUrl",
          "type": "java.lang.String",
          "description": "机器人 WebHook Url.",

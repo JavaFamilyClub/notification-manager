@@ -3,6 +3,7 @@ package club.javafamily.nf.properties;
 import club.javafamily.nf.enums.SecurityConfTypeEnum;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
  * @date 2022/6/4 下午10:42
  * @description 飞书通知属性配置
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Component
 @ConfigurationProperties(prefix = "javafamily.notify.feishu")

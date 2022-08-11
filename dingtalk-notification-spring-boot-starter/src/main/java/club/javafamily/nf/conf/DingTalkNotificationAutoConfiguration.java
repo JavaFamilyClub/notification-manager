@@ -2,6 +2,7 @@ package club.javafamily.nf.conf;
 
 import club.javafamily.nf.properties.DingTalkProperties;
 import club.javafamily.nf.service.DingTalkNotifyHandler;
+import club.javafamily.nf.service.NoOpDingTalkNotifyHandler;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +29,11 @@ public class DingTalkNotificationAutoConfiguration {
 
    @Bean
    public DingTalkNotifyHandler dingTalkNotifyHandler() {
-      return new DingTalkNotifyHandler(properties, restTemplate);
+      if(properties.getEnabled() == null || properties.getEnabled()) {
+         return new DingTalkNotifyHandler(properties, restTemplate);
+      }
+
+      return new NoOpDingTalkNotifyHandler(properties);
    }
 
 }
