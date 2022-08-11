@@ -70,7 +70,7 @@ javafamily:
 
    http:
       proxy:
-         type: HTTP
+         type: http
          host: 192.168.3.26
          port: 9999
 ```
