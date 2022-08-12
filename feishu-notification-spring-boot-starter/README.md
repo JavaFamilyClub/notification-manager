@@ -60,7 +60,8 @@ javafamily:
 > 发送 webhook 请求底层是通过封装的 `resttemplate` 进行请求,
 > 而 `restTemplate` 是通过 [javafamily-resttemplate-starter](https://github.com/JavaFamilyClub/javafamily-core/tree/main/javafamily-resttemplate-starter)
 > 提供组件服务与配置, 因此, `feishu-notification-spring-boot-starter` 天生支持 `javafamily-resttemplate-starter` 组件的全部配置.
-> 如: 配置代理
+>
+> 如: 配置代理(支持 http 及 socks 代理)
 
 ``` yml
 javafamily:
@@ -70,9 +71,9 @@ javafamily:
 
    http:
       proxy:
-         type: http
-         host: 192.168.3.26
-         port: 9999
+         type: http # type: socks
+         host: 192.168.56.27
+         port: 10080
 ```
 
 > 更多 `restTemplate` 的配置请参考: [javafamily-resttemplate-starter](https://github.com/JavaFamilyClub/javafamily-core/tree/main/javafamily-resttemplate-starter)
