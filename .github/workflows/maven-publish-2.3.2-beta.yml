@@ -4,8 +4,6 @@
 name: MavenPublish(2.3.2-beta)
 
 on:
-  push:
-    branches: [ 2.3.2-beta ]
   release:
     branches: [ 2.3.2-beta ]
     types: [published]
