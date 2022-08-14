@@ -34,6 +34,7 @@ jobs:
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PWD }}
 
     - name: Publish bom to GitHub Packages Apache Maven
+      if: always()
       run: cd notification-manager-bom && mvn clean deploy
       env:
         MAVEN_USERNAME:  ${{ secrets.MAVEN_CENTER_USER_NAME }}
