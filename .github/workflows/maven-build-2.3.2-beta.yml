@@ -1,0 +1,40 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+
+name: Build(2.3.2-beta)
+
+on:
+  push:
+    branches: [ 2.3.2-beta ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**/*'
+      - '.github/**/*'
+  pull_request:
+    branches: [ 2.3.2-beta ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**/*'
+      - '.github/**/*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v3
+      with:
+        java-version: 8.0.302+8
+        distribution: 'temurin'
+        server-id: javafamily-central-release # Value of the distributionManagement/repository/id field of the pom.xml
+        server-username: MAVEN_USERNAME # env variable for username in deploy
+        server-password: MAVEN_PASSWORD # env variable for token in deploy
+
+    - name: Build project
+      run: mvn clean package
+      env:
+        MAVEN_USERNAME:  ${{ secrets.MAVEN_CENTER_USER_NAME }}
+        MAVEN_PASSWORD: ${{ secrets.MAVEN_CENTER_PASSWORD }}

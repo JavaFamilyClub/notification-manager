@@ -6,7 +6,7 @@
 
     <groupId>club.javafamily</groupId>
     <artifactId>notification-manager-bom</artifactId>
-    <version>2.3.2-SNAPSHOT</version>
+    <version>2.3.2-beta.1</version>
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
@@ -14,23 +14,23 @@
     <url>https://github.com/JavaFamilyClub/notification-manager</url>
 
     <properties>
-        <notification.manager.version>2.3.2-SNAPSHOT</notification.manager.version>
+        <notification.manager.version>2.3.2-beta.1</notification.manager.version>
     </properties>
 
     <distributionManagement>
         <snapshotRepository>
-            <id>javafamily-central</id>
+            <id>javafamily-central-snapshot</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <id>javafamily-central</id>
+            <id>javafamily-central-release</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
     <repositories>
         <repository>
-            <id>javafamily-central</id>
+            <id>javafamily-central-snapshot</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
             <releases>
                 <enabled>false</enabled>
@@ -123,7 +123,7 @@
                     <!-- autoReleaseAfterClose的值为true，则脚本会自动完成在平台上close、release的操作，至此你将成功发布了 -->
                     <extensions>true</extensions>
                     <configuration>
-                        <serverId>javafamily-central</serverId>
+                        <serverId>javafamily-central-release</serverId>
                         <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                         <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     </configuration>
