@@ -32,3 +32,10 @@ jobs:
         MAVEN_USERNAME:  ${{ secrets.MAVEN_CENTER_USER_NAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_CENTER_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PWD }}
+
+    - name: Publish bom to GitHub Packages Apache Maven
+      run: cd notification-manager-bom && mvn clean deploy
+      env:
+        MAVEN_USERNAME:  ${{ secrets.MAVEN_CENTER_USER_NAME }}
+        MAVEN_PASSWORD: ${{ secrets.MAVEN_CENTER_PASSWORD }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PWD }}
