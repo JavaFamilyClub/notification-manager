@@ -5,7 +5,7 @@
     <parent>
         <artifactId>notification-manager</artifactId>
         <groupId>club.javafamily</groupId>
-        <version>2.3.2-beta.6</version>
+        <version>2.3.2-beta.7</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

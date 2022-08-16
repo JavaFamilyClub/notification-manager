@@ -1,7 +1,6 @@
 package club.javafamily.nf.properties;
 
 import club.javafamily.nf.enums.SecurityConfTypeEnum;
-import lombok.Builder;
 import lombok.Data;
 
 /**
