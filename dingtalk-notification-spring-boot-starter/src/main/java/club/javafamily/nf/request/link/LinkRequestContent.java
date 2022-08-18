@@ -4,6 +4,7 @@ import club.javafamily.nf.request.content.TextRequestContent;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * @author Jack Li
