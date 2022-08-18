@@ -1,7 +1,9 @@
 # 1. 简介
 > 通知管理器
 
-[![MavenPublish](https://github.com/JavaFamilyClub/notification-manager/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/JavaFamilyClub/notification-manager/actions/workflows/maven-publish.yml)
+[![Build](https://github.com/JavaFamilyClub/notification-manager/actions/workflows/maven-build.yml/badge.svg)](https://github.com/JavaFamilyClub/notification-manager/actions/workflows/maven-build.yml)
+[![MavenPublishSnapshot](https://github.com/JavaFamilyClub/notification-manager/actions/workflows/maven-publish-snapshot.yml/badge.svg)](https://github.com/JavaFamilyClub/notification-manager/actions/workflows/maven-publish-snapshot.yml)
+[![MavenPublishRelease](https://github.com/JavaFamilyClub/notification-manager/actions/workflows/maven-publish-release.yml/badge.svg)](https://github.com/JavaFamilyClub/notification-manager/actions/workflows/maven-publish-release.yml)
 
 # 2. 路线图
 
