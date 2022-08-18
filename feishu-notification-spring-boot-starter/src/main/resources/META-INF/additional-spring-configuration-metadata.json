@@ -24,13 +24,22 @@
       {
          "name": "javafamily.notify.feishu.securityType",
          "type": "club.javafamily.nf.enums.SecurityConfTypeEnum",
+         "sourceType": "club.javafamily.nf.properties.FeiShuProperties",
          "description": "安全类型.",
          "defaultValue": "KEYWORD"
       },
       {
          "name": "javafamily.notify.feishu.keyWord",
          "type": "java.lang.String",
+         "sourceType": "club.javafamily.nf.properties.FeiShuProperties",
          "description": "关键词."
+      },
+      {
+         "name": "javafamily.notify.feishu.inhibitEnabled",
+         "type": "java.lang.Boolean",
+         "sourceType": "club.javafamily.nf.properties.FeiShuProperties",
+         "description": "是否启用抑制.",
+         "defaultValue": false
       }
    ],
    "hints": [

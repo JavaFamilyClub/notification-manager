@@ -52,6 +52,7 @@
 
         <javafamily.core.version>2.3.2-beta.4</javafamily.core.version>
         <javafamily.utils.version>2.3.2-beta.4</javafamily.utils.version>
+        <javafamily.cache.version>2.3.2-beta.1</javafamily.cache.version>
         <notification.manager.version>2.3.2-SNAPSHOT</notification.manager.version>
     </properties>
 
@@ -88,6 +89,12 @@
                 <groupId>club.javafamily</groupId>
                 <artifactId>javafamily-resttemplate-starter</artifactId>
                 <version>${javafamily.core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>club.javafamily</groupId>
+                <artifactId>javafamily-cache</artifactId>
+                <version>${javafamily.cache.version}</version>
             </dependency>
 
             <dependency>

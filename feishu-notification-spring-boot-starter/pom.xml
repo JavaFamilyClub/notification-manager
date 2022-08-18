@@ -31,6 +31,11 @@
             <groupId>club.javafamily</groupId>
             <artifactId>notification-common</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>javafamily-cache</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
