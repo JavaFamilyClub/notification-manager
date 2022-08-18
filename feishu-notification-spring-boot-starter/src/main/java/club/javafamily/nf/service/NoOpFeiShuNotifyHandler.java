@@ -11,18 +11,20 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class NoOpFeiShuNotifyHandler extends FeiShuNotifyHandler {
 
+    private static final String NOOP_RESPONSE = "no op";
+
     public NoOpFeiShuNotifyHandler(FeiShuProperties properties) {
         this(properties, null);
     }
 
     public NoOpFeiShuNotifyHandler(FeiShuProperties properties, RestTemplate restTemplate) {
-        super(properties, restTemplate, inhibitRule, cacheOperator);
+        super(properties, restTemplate, null, null);
     }
 
     @Override
     public String notify(FeiShuNotifyRequest request) {
         log.info("Received feiShuNotifyRequest in no op handler! {}", request);
 
-        return "no op";
+        return NOOP_RESPONSE;
     }
 }
