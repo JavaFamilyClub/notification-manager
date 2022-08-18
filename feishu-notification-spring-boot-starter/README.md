@@ -4,9 +4,20 @@
 
 ## 1. 引入依赖
 
-* Maven Central Snapshot 仓库
+* Maven Central Release
 
 ``` xml
+<dependency>
+   <groupId>club.javafamily</groupId>
+   <artifactId>feishu-notification-spring-boot-starter</artifactId>
+   <version>2.3.2-beta.7</version>
+</dependency>
+```
+
+* Maven Central Snapshot
+
+``` xml
+   <!-- Snapshot 库需确保 snapshots 是被允许的 -->
    <repositories>
       <repository>
          <id>maven-central</id>
@@ -29,16 +40,6 @@
          <version>2.3.2-SNAPSHOT</version>
       </dependency>
    </dependencies>
-```
-
-* Maven Central Release 仓库(发布审核中)
-
-``` xml
-<dependency>
-   <groupId>club.javafamily</groupId>
-   <artifactId>feishu-notification-spring-boot-starter</artifactId>
-   <version>2.3.2-beta</version>
-</dependency>
 ```
 
 ## 2. 配置
