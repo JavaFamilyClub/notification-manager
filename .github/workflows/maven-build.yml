@@ -6,7 +6,7 @@ name: Build
 on:
   push:
     branches: [
-      master,
+      main,
       2.3.2-beta
     ]
     paths-ignore:
