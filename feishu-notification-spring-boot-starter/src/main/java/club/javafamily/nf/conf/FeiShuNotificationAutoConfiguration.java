@@ -26,6 +26,9 @@ import org.springframework.web.client.RestTemplate;
      RestTemplateAutoConfiguration.class
 })
 @AutoConfigureBefore({
+     /**
+      * 需要修改 Cache ttl, 因此需要在 {@link JavaFamilyCacheAutoConfiguration} 之后
+      */
      JavaFamilyCacheAutoConfiguration.class
 })
 @Import(InhibitNotifyConf.class)
@@ -44,6 +47,11 @@ public class FeiShuNotificationAutoConfiguration {
       this.inhibitPolicy = inhibitPolicy;
    }
 
+   /**
+    * 定义飞书通知处理器
+    * @return 如何启用通知, 返回 {@link FeiShuNotifyHandler}
+    * 否则返回 {@link NoOpFeiShuNotifyHandler}
+    */
    @Bean
    public FeiShuNotifyHandler feiShuNotifyHandler() {
       if(properties.getEnabled() == null || properties.getEnabled()) {
@@ -51,6 +59,15 @@ public class FeiShuNotificationAutoConfiguration {
       }
 
       return new NoOpFeiShuNotifyHandler(properties);
+   }
+
+   /**
+    * 将通知组件的抑制 ttl 生效于 Cache 组件. {@link club.javafamily.autoconfigre.cache.config.CacheCustomizer}
+    * @return 用于修改 cache ttl 的 Customizer
+    */
+   @Bean
+   public JavaFamilyCacheCustomizer javaFamilyCacheCustomizer() {
+      return new JavaFamilyCacheCustomizer(properties);
    }
 
 }
