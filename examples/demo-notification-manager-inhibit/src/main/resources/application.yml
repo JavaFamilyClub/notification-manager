@@ -2,12 +2,18 @@ jasypt:
    encryptor:
       password: ${JF_JASYPT_ENCRYPTOR}
 
+
 javafamily:
+   cache:
+      key-prefix: demo-
+      time-to-live: 5s
+      caffeine:
+         record-stats: on
+
    notify:
       feishu:
          hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
-         security-type: keyword
-         keyWord: 测试
+         inhibitEnabled: true
 
       dingtalk:
          hook-url: https://oapi.dingtalk.com/robot/send?access_token=5221404563667b04140f92e5820e6213fcdc2fe6a97560fe1f233fd468ef8e75
