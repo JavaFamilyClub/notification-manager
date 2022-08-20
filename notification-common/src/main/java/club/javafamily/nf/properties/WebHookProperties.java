@@ -33,5 +33,5 @@ public class WebHookProperties {
     /**
      * 启用抑制
      */
-    protected Boolean inhibitEnabled = false;
+    protected Inhibit inhibit = new Inhibit();
 }

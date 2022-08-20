@@ -1,4 +1,4 @@
-package club.javafamily.nf.service.inhibit;
+package club.javafamily.nf.service.inhibit.rule;
 
 import club.javafamily.nf.request.NotifyRequest;
 import club.javafamily.nf.service.InhibitRule;

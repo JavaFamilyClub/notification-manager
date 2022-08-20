@@ -6,6 +6,7 @@ import club.javafamily.nf.po.InhibitCachePo;
 import club.javafamily.nf.properties.FeiShuProperties;
 import club.javafamily.nf.request.FeiShuImageNotifyRequest;
 import club.javafamily.nf.request.FeiShuNotifyRequest;
+import club.javafamily.nf.service.inhibit.policy.DefaultInhibitPolicy;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
@@ -18,18 +19,15 @@ import org.springframework.web.client.RestTemplate;
 public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRequest> {
 
     private final FeiShuProperties properties;
-    private final InhibitRule inhibitRule;
-    private final CacheOperator cacheOperator;
+    private final InhibitPolicy inhibitPolicy;
 
     public FeiShuNotifyHandler(FeiShuProperties properties,
                                RestTemplate restTemplate,
-                               InhibitRule inhibitRule,
-                               CacheOperator cacheOperator)
+                               InhibitPolicy inhibitPolicy)
     {
         super(restTemplate);
         this.properties = properties;
-        this.inhibitRule = inhibitRule;
-        this.cacheOperator = cacheOperator;
+        this.inhibitPolicy = inhibitPolicy;
     }
 
     @Override
@@ -49,14 +47,9 @@ public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRe
 
     @Override
     public String notify(FeiShuNotifyRequest request) {
-        String identity = null;
-
-        if(inhibitRule != null) {
-            identity = inhibitRule.inhibitIdentity(request);
-
-            if(StringUtils.hasText(identity) && cacheOperator.getValue(identity) != null) {
-                return InhibitRule.INHIBIT_RESPONSE;
-            }
+        // inhibited
+        if(inhibitPolicy != null && inhibitPolicy.isInhibited(request)) {
+            return InhibitRule.INHIBIT_RESPONSE;
         }
 
         if(request instanceof FeiShuImageNotifyRequest) {
@@ -77,11 +70,8 @@ public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRe
 
         String response = postForJson(properties.getHookUrl(), request, String.class);
 
-        if (identity != null) {
-            cacheOperator.setValue(identity, InhibitCachePo.builder()
-                    .request(request)
-                    .response(response)
-                    .build());
+        if (inhibitPolicy != null) {
+            inhibitPolicy.completeInhibited(request, response);
         }
 
         return response;

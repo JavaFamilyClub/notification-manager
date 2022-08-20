@@ -52,7 +52,7 @@
 
         <javafamily.core.version>2.3.2-beta.4</javafamily.core.version>
         <javafamily.utils.version>2.3.2-beta.4</javafamily.utils.version>
-        <javafamily.cache.version>2.3.2-beta.1</javafamily.cache.version>
+        <javafamily.cache.version>2.3.2-SNAPSHOT</javafamily.cache.version>
         <notification.manager.version>2.3.2-SNAPSHOT</notification.manager.version>
     </properties>
 

@@ -18,7 +18,7 @@ public class NoOpFeiShuNotifyHandler extends FeiShuNotifyHandler {
     }
 
     public NoOpFeiShuNotifyHandler(FeiShuProperties properties, RestTemplate restTemplate) {
-        super(properties, restTemplate, null, null);
+        super(properties, restTemplate, null);
     }
 
     @Override
