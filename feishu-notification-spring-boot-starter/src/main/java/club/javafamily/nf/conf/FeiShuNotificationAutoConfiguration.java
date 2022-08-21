@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestTemplate;
 
@@ -65,8 +64,8 @@ public class FeiShuNotificationAutoConfiguration {
     * @return 用于修改 cache ttl 的 Customizer
     */
    @Bean
-   public JavaFamilyCacheCustomizer javaFamilyCacheCustomizer() {
-      return new JavaFamilyCacheCustomizer(properties);
+   public JavaFamilyCachePropertiesCustomizer javaFamilyCacheCustomizer() {
+      return new JavaFamilyCachePropertiesCustomizer(properties);
    }
 
 }

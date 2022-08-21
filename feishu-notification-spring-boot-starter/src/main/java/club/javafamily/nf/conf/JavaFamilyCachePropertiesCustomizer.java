@@ -1,6 +1,6 @@
 package club.javafamily.nf.conf;
 
-import club.javafamily.autoconfigre.cache.config.CacheCustomizer;
+import club.javafamily.autoconfigre.cache.config.CachePropertiesCustomizer;
 import club.javafamily.autoconfigre.cache.properties.JavaFamilyCacheProperties;
 import club.javafamily.nf.properties.FeiShuProperties;
 import club.javafamily.nf.properties.Inhibit;
@@ -10,11 +10,11 @@ import club.javafamily.nf.properties.Inhibit;
  * 如果 <tt>javafamily-cache</tt> 和 <tt>feishu-notification-spring-boot-starter</tt> 同时配置,
  * 则 <tt>feishu-notification-spring-boot-starter</tt> 生效
  */
-public class JavaFamilyCacheCustomizer implements CacheCustomizer {
+public class JavaFamilyCachePropertiesCustomizer implements CachePropertiesCustomizer {
 
     private final FeiShuProperties properties;
 
-    public JavaFamilyCacheCustomizer(FeiShuProperties properties) {
+    public JavaFamilyCachePropertiesCustomizer(FeiShuProperties properties) {
         this.properties = properties;
     }
 
