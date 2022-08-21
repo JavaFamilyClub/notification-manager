@@ -29,14 +29,37 @@ public class FeiShuNotifyTests {
    }
 
    @Test
-   void testInhibit() throws InterruptedException {
-      testNotifyText();
+   void testTextInhibit() throws InterruptedException {
       testNotifyText();
       testNotifyText();
 
       TimeUnit.SECONDS.sleep(5);
 
       testNotifyText();
+
+      System.out.println();
+   }
+
+   @Test
+   void testPostInhibit() throws InterruptedException {
+      testNotifyPost();
+      testNotifyPost();
+
+      TimeUnit.SECONDS.sleep(5);
+
+      testNotifyPost();
+
+      System.out.println();
+   }
+
+   @Test
+   void testCardInhibit() throws InterruptedException {
+      testNotifyCard();
+      testNotifyCard();
+
+      TimeUnit.SECONDS.sleep(5);
+
+      testNotifyCard();
 
       System.out.println();
    }
