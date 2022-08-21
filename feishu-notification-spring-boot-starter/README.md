@@ -10,7 +10,7 @@
 <dependency>
    <groupId>club.javafamily</groupId>
    <artifactId>feishu-notification-spring-boot-starter</artifactId>
-   <version>2.3.2-beta.7</version>
+   <version>2.3.2-beta.8</version>
 </dependency>
 ```
 
