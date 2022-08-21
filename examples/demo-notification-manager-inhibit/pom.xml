@@ -18,7 +18,7 @@
 
    <repositories>
       <repository>
-         <id>maven-central</id>
+         <id>javafamily-central-snapshot</id>
          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
          <releases>
             <enabled>false</enabled>

@@ -1,10 +1,10 @@
 package club.javafamily.nf.conf;
 
 import club.javafamily.autoconfigre.cache.config.JavaFamilyCacheAutoConfiguration;
-import club.javafamily.autoconfigre.resttemplate.config.RestTemplateAutoConfiguration;
 import club.javafamily.nf.properties.FeiShuProperties;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
