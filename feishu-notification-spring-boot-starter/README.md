@@ -10,7 +10,7 @@
 <dependency>
    <groupId>club.javafamily</groupId>
    <artifactId>feishu-notification-spring-boot-starter</artifactId>
-   <version>2.3.2-beta.7</version>
+   <version>2.3.2-beta.8</version>
 </dependency>
 ```
 
@@ -56,7 +56,46 @@ javafamily:
          enabled: true  # 是否开启通知, 用于不同环境下的区分(开发, 测试, 生产), 默认为 true
 ```
 
-### 2.2 restTemplate 配置
+### 2.2 抑制策略
+
+> 当我们需要对通过进行抑制时(如: 通过飞书通知一些接口异常、服务宕机等信息, 有时候并不需要一直推送通知消息), 此时, 就可以通过抑制策略进行通知消息的抑制!
+
+```yml
+javafamily:
+   notify:
+      feishu:
+         hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
+         inhibit:
+            enabled: on
+            ttl: 1h
+```
+
+> 通过指定 `inhibit` 属性进行抑制配置, 目前支持
+> * `enabled`: 是否开启抑制
+> * `ttl`: 抑制时效(同样的通知多久发送一次)
+
+> 更多配置请查看 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache) 
+> 通知抑制是通过 `javafamily-cache` 提供组件服务与配置, 因此,
+> `feishu-notification-spring-boot-starter` 同样支持 `JavaFamilyClub/javafamily-cache` 组件的全部配置. 
+> 如:
+
+```yml
+javafamily:
+  cache:
+    type: caffeine # redis
+    key-prefix: demo-
+    time-to-live: 20s
+    caffeine:
+      max-size: 500
+      weak-keys: on
+      soft-values: on
+      record-stats: on
+```
+
+> 需要注意, `cache.time-to-live` 与 `inhibit.ttl` 如果都配置, 则 `inhibit.ttl` 优先级更高(生效). 
+> 具体细节请参考 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache)
+
+### 2.3 restTemplate 配置
 
 > 发送 webhook 请求底层是通过封装的 `resttemplate` 进行请求,
 > 而 `restTemplate` 是通过 [javafamily-resttemplate-starter](https://github.com/JavaFamilyClub/javafamily-core/tree/main/javafamily-resttemplate-starter)
@@ -92,6 +131,7 @@ public class FeiShuNotifyTests {
 ## 4. 创建 Request, 发送通知
 
 * Text 通知
+
 ```java
    @Test
    void testNotifyText() {
@@ -105,6 +145,7 @@ public class FeiShuNotifyTests {
 ![image-20220806170743367](img/README//image-20220806170743367.png)
 
 * Post 通知
+
 ```java
    @Test
    void testNotifyPost() {

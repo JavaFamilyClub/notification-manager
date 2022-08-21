@@ -9,13 +9,13 @@
 
 详情请参考 [Notification-Manager Roadmap](https://github.com/orgs/JavaFamilyClub/projects/3/views/1)
 
-* [飞书](./feishu-notification-spring-boot-starter)
+* [飞书通知](./feishu-notification-spring-boot-starter)
   * 普通文本
   * 富文本
   * 图片(delay)
   * 消息卡片
 
-* [钉钉](./dingtalk-notification-spring-boot-starter)
+* [钉钉通知](./dingtalk-notification-spring-boot-starter)
   * 普通文本
   * MarkDown
   * Link
