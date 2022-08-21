@@ -37,6 +37,8 @@ public class FeiShuNotifyTests {
       TimeUnit.SECONDS.sleep(5);
 
       testNotifyText();
+
+      System.out.println();
    }
 
    @Test

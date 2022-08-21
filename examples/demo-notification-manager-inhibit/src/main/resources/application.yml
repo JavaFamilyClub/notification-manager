@@ -15,7 +15,7 @@ javafamily:
          hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
          inhibit:
             enabled: on
-            ttl: 5s
+            ttl: 3s
 
       dingtalk:
          hook-url: https://oapi.dingtalk.com/robot/send?access_token=5221404563667b04140f92e5820e6213fcdc2fe6a97560fe1f233fd468ef8e75
@@ -56,7 +56,7 @@ spring:
       port: 587
       default-encoding: utf-8
       username: javafamily.no-reply@outlook.com
-      password: ENC(i2xZ8QsK8MIkhtt4SX2jKiFtvMXozRRl)
+      password: xxx
       properties:
          mail:
             smtp:

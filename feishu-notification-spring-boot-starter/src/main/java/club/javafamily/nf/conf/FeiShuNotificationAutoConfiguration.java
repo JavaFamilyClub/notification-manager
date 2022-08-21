@@ -20,7 +20,6 @@ import org.springframework.web.client.RestTemplate;
  * @date 2022/6/4 下午10:35
  * @description
  */
-@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(FeiShuProperties.class)
 @AutoConfigureAfter({
      RestTemplateAutoConfiguration.class
