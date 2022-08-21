@@ -1,18 +1,13 @@
 package club.javafamily.nf.conf;
 
-import club.javafamily.autoconfigre.resttemplate.config.RestTemplateAutoConfiguration;
 import club.javafamily.autoconfigre.cache.config.JavaFamilyCacheAutoConfiguration;
+import club.javafamily.autoconfigre.resttemplate.config.RestTemplateAutoConfiguration;
 import club.javafamily.nf.properties.FeiShuProperties;
-import club.javafamily.nf.service.FeiShuNotifyHandler;
-import club.javafamily.nf.service.InhibitPolicy;
-import club.javafamily.nf.service.NoOpFeiShuNotifyHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Jack Li
@@ -29,34 +24,14 @@ import org.springframework.web.client.RestTemplate;
       */
      JavaFamilyCacheAutoConfiguration.class
 })
-@Import(InhibitNotifyConf.class)
+@Import({ InhibitNotifyConf.class, NotifyHandlerConf.class })
 public class FeiShuNotificationAutoConfiguration {
 
    private final FeiShuProperties properties;
-   private final RestTemplate restTemplate;
-   private final InhibitPolicy inhibitPolicy;
 
-   public FeiShuNotificationAutoConfiguration(FeiShuProperties feiShuProperties,
-                                              RestTemplate restTemplate,
-                                              @Autowired(required = false) InhibitPolicy inhibitPolicy)
+   public FeiShuNotificationAutoConfiguration(FeiShuProperties feiShuProperties)
    {
       this.properties = feiShuProperties;
-      this.restTemplate = restTemplate;
-      this.inhibitPolicy = inhibitPolicy;
-   }
-
-   /**
-    * 定义飞书通知处理器
-    * @return 如何启用通知, 返回 {@link FeiShuNotifyHandler}
-    * 否则返回 {@link NoOpFeiShuNotifyHandler}
-    */
-   @Bean
-   public FeiShuNotifyHandler feiShuNotifyHandler() {
-      if(properties.getEnabled() == null || properties.getEnabled()) {
-         return new FeiShuNotifyHandler(properties, restTemplate, inhibitPolicy);
-      }
-
-      return new NoOpFeiShuNotifyHandler(properties);
    }
 
    /**
