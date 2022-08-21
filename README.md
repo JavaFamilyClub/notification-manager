@@ -35,5 +35,9 @@
 
 # 3. 示例代码
 
-[examples](./examples)
+> 所有的示例代码都在 [examples](./examples)
+
+* `单独的通知组件`: [单独 Starter 引用示例](./examples/demo-notification-manager)
+* `notification-manager-all`: [notification-manager-all Starter 引用示例](./examples/demo-notification-manager-all)
+* `通知抑制示例`: [抑制配置示例](./examples/demo-notification-manager-inhibit)
 

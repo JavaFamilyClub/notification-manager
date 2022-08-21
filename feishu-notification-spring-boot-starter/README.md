@@ -189,3 +189,10 @@ public class FeiShuNotifyTests {
 ```
 
 ![image-20220806170925022](img/README//image-20220806170925022.png)
+
+## 5. 示例代码
+
+> 所有的示例代码都在 [examples](./examples)
+
+* `组件使用示例`: [组件使用示例项目](./examples/demo-notification-manager)
+* `抑制通知示例`: [抑制配置示例项目](./examples/demo-notification-manager-inhibit)
