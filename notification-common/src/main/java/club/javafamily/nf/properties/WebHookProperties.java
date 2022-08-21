@@ -30,4 +30,8 @@ public class WebHookProperties {
      */
     protected String keyWord;
 
+    /**
+     * 启用抑制
+     */
+    protected Inhibit inhibit = new Inhibit();
 }

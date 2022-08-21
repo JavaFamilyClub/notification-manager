@@ -10,6 +10,7 @@ import java.io.Serializable;
  * @date 2022/6/4 下午10:51
  * @description 文本消息
  */
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

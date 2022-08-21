@@ -5,7 +5,7 @@
     <parent>
         <artifactId>notification-manager</artifactId>
         <groupId>club.javafamily</groupId>
-        <version>2.3.2-beta.7</version>
+        <version>2.3.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -30,6 +30,11 @@
         <dependency>
             <groupId>club.javafamily</groupId>
             <artifactId>notification-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>javafamily-cache</artifactId>
         </dependency>
     </dependencies>
 

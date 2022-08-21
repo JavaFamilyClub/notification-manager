@@ -1,13 +1,15 @@
 package club.javafamily.nf.service;
 
+import club.javafamily.autoconfigre.cache.service.CacheOperator;
 import club.javafamily.nf.enums.NotifySupportTypeEnum;
+import club.javafamily.nf.po.InhibitCachePo;
 import club.javafamily.nf.properties.FeiShuProperties;
 import club.javafamily.nf.request.FeiShuImageNotifyRequest;
 import club.javafamily.nf.request.FeiShuNotifyRequest;
+import club.javafamily.nf.service.inhibit.policy.DefaultInhibitPolicy;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.InputStream;
 
 /**
  * @author Jack Li
@@ -17,14 +19,15 @@ import java.io.InputStream;
 public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRequest> {
 
     private final FeiShuProperties properties;
-    private final RestTemplate restTemplate;
+    private final InhibitPolicy inhibitPolicy;
 
     public FeiShuNotifyHandler(FeiShuProperties properties,
-                               RestTemplate restTemplate)
+                               RestTemplate restTemplate,
+                               InhibitPolicy inhibitPolicy)
     {
         super(restTemplate);
         this.properties = properties;
-        this.restTemplate = restTemplate;
+        this.inhibitPolicy = inhibitPolicy;
     }
 
     @Override
@@ -44,6 +47,11 @@ public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRe
 
     @Override
     public String notify(FeiShuNotifyRequest request) {
+        // inhibited
+        if(inhibitPolicy != null && inhibitPolicy.isInhibited(request)) {
+            return InhibitRule.INHIBIT_RESPONSE;
+        }
+
         if(request instanceof FeiShuImageNotifyRequest) {
             final FeiShuImageNotifyRequest.FeiShuImageContent content
                = ((FeiShuImageNotifyRequest) request).getContent();
@@ -51,8 +59,8 @@ public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRe
             if(content instanceof FeiShuImageNotifyRequest.FeiShuImageStreamContent
                 && ObjectUtils.isEmpty(content.getImage_key()))
             {
-                final InputStream in = ((FeiShuImageNotifyRequest
-                   .FeiShuImageStreamContent) content).getImageStream();
+//                final InputStream in = ((FeiShuImageNotifyRequest
+//                   .FeiShuImageStreamContent) content).getImageStream();
 
                 // TODO upload image: this is need to authrization on feishu platform.
 
@@ -60,6 +68,12 @@ public class FeiShuNotifyHandler extends BaseWebHookNotifyHandler<FeiShuNotifyRe
             }
         }
 
-        return postForJson(properties.getHookUrl(), request, String.class);
+        String response = postForJson(properties.getHookUrl(), request, String.class);
+
+        if (inhibitPolicy != null) {
+            inhibitPolicy.completeInhibited(request, response);
+        }
+
+        return response;
     }
 }
