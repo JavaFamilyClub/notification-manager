@@ -4,7 +4,7 @@
 
 ## 1. 引入依赖
 
-* Maven Central Release
+* Maven Central Release (Maven 中央仓库正式版)
 
 ``` xml
 <dependency>
@@ -14,7 +14,7 @@
 </dependency>
 ```
 
-* Maven Central Snapshot
+* Maven Central Snapshot (Maven SNAPSHOT 仓库新功能尝鲜)
 
 ``` xml
    <!-- Snapshot 库需确保 snapshots 是被允许的 -->
@@ -80,6 +80,13 @@ javafamily:
 
 ```yml
 javafamily:
+  notify:
+    feishu:
+      hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
+      inhibit:
+        enabled: on
+        ttl: 3s
+
   cache:
     type: caffeine # redis
     key-prefix: demo- # 缓存 key 前缀
