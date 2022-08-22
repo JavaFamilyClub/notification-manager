@@ -74,8 +74,6 @@ javafamily:
 > * `enabled`: 是否开启抑制
 > * `ttl`: 抑制时效(同样的通知多久发送一次)
 
-> 更多配置请查看 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache) 
-> 
 > 通知抑制是通过 `javafamily-cache` 提供组件服务与配置, 因此,
 > `feishu-notification-spring-boot-starter` 同样支持 `JavaFamilyClub/javafamily-cache` 组件的全部配置. 
 > 如:
@@ -94,8 +92,8 @@ javafamily:
 ```
 
 > 需要注意, `cache.time-to-live` 与 `inhibit.ttl` 如果都配置, 则 `inhibit.ttl` 优先级更高(生效). 
-> 
-> 具体细节请参考 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache)
+
+> 更多配置请查看 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache)
 
 ### 2.3 restTemplate 配置
 
