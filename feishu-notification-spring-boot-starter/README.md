@@ -74,7 +74,7 @@ javafamily:
 > * `enabled`: 是否开启抑制
 > * `ttl`: 抑制时效(同样的通知多久发送一次)
 
-> 通知抑制是通过 `javafamily-cache` 提供组件服务与配置, 因此,
+> 通知抑制是通过 [javafamily-cache 组件](https://github.com/JavaFamilyClub/javafamily-cache) 提供组件服务与配置, 因此,
 > `feishu-notification-spring-boot-starter` 同样支持 `JavaFamilyClub/javafamily-cache` 组件的全部配置. 
 > 如:
 
