@@ -66,8 +66,8 @@ javafamily:
       feishu:
          hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
          inhibit:
-            enabled: on
-            ttl: 1h
+            enabled: on # 默认为 off
+            ttl: 1h # 代表同一个消息, 1h 只推送一次
 ```
 
 > 通过指定 `inhibit` 属性进行抑制配置, 目前支持
@@ -75,6 +75,7 @@ javafamily:
 > * `ttl`: 抑制时效(同样的通知多久发送一次)
 
 > 更多配置请查看 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache) 
+> 
 > 通知抑制是通过 `javafamily-cache` 提供组件服务与配置, 因此,
 > `feishu-notification-spring-boot-starter` 同样支持 `JavaFamilyClub/javafamily-cache` 组件的全部配置. 
 > 如:
@@ -83,9 +84,9 @@ javafamily:
 javafamily:
   cache:
     type: caffeine # redis
-    key-prefix: demo-
-    time-to-live: 20s
-    caffeine:
+    key-prefix: demo- # 缓存 key 前缀
+    time-to-live: 20s # 缓存 expire 时间
+    caffeine: # caffeine 缓存相关配置
       max-size: 500
       weak-keys: on
       soft-values: on
@@ -93,6 +94,7 @@ javafamily:
 ```
 
 > 需要注意, `cache.time-to-live` 与 `inhibit.ttl` 如果都配置, 则 `inhibit.ttl` 优先级更高(生效). 
+> 
 > 具体细节请参考 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache)
 
 ### 2.3 restTemplate 配置
