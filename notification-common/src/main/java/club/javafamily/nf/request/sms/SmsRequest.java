@@ -17,6 +17,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @AllArgsConstructor
 public class SmsRequest implements NotifyRequest {
 
+   private static final long serialVersionUID = 1L;
+
    /**
     * request endpoint
     */

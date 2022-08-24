@@ -17,6 +17,8 @@ import java.util.List;
 @Data
 public class EmailNotifyRequest implements NotifyRequest {
 
+   private static final long serialVersionUID = 1L;
+
    @Builder.Default
    protected MailType type = MailType.SIMPLE;
 
