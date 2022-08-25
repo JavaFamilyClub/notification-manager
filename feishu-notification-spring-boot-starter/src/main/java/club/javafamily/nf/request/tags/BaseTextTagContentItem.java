@@ -8,19 +8,20 @@ import lombok.Data;
  * @description
  */
 @Data
-public class BaseTextTagContentItem <T> implements TagContentItem {
-   protected String tag = "text";
+public class BaseTextTagContentItem <T>  extends AbstractTagContentItem {
    protected T text;
 
    public BaseTextTagContentItem() {
+      super("text");
    }
 
    public BaseTextTagContentItem(T text) {
+      this();
       this.text = text;
    }
 
    public BaseTextTagContentItem(String tag, T text) {
-      this.tag = tag;
+      super(tag);
       this.text = text;
    }
 }

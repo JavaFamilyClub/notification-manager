@@ -13,11 +13,18 @@ import java.util.*;
  * @description
  */
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class FeiShuCardNotifyRequest extends FeiShuNotifyRequest {
    private FeiShuCardRequestContent card;
+
+   public FeiShuCardNotifyRequest() {
+      super("interactive");
+   }
+
+   public FeiShuCardNotifyRequest(FeiShuCardRequestContent card) {
+      this();
+      this.card = card;
+   }
 
    public static FeiShuCardNotifyRequest of(String title,
                                             String mdText,
@@ -63,11 +70,6 @@ public class FeiShuCardNotifyRequest extends FeiShuNotifyRequest {
       request.setCard(cardContent);
 
       return request;
-   }
-
-   @Override
-   public String getMsg_type() {
-      return "interactive";
    }
 
    @NoArgsConstructor
