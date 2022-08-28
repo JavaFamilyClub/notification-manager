@@ -10,7 +10,7 @@
 <dependency>
    <groupId>club.javafamily</groupId>
    <artifactId>feishu-notification-spring-boot-starter</artifactId>
-   <version>2.3.2-beta.8</version>
+   <version>2.3.2-beta.10</version>
 </dependency>
 ```
 
@@ -75,7 +75,7 @@ javafamily:
 > * `ttl`: 抑制时效(同样的通知多久发送一次)
 
 > 通知抑制是通过 [javafamily-cache 组件](https://github.com/JavaFamilyClub/javafamily-cache) 提供组件服务与配置, 因此,
-> `feishu-notification-spring-boot-starter` 同样支持 `JavaFamilyClub/javafamily-cache` 组件的全部配置. 
+> `feishu-notification-spring-boot-starter` 同样支持 `JavaFamilyClub/javafamily-cache` 组件的全部配置.
 > 如:
 
 ```yml
@@ -98,7 +98,7 @@ javafamily:
       record-stats: on
 ```
 
-> 需要注意, `cache.time-to-live` 与 `inhibit.ttl` 如果都配置, 则 `inhibit.ttl` 优先级更高(生效). 
+> 需要注意, `cache.time-to-live` 与 `inhibit.ttl` 如果都配置, 则 `inhibit.ttl` 优先级更高(生效).
 
 > 更多配置请查看 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache)
 
