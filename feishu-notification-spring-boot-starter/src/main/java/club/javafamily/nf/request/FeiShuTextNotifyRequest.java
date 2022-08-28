@@ -9,12 +9,19 @@ import lombok.*;
  * @description 文本消息
  */
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class FeiShuTextNotifyRequest extends FeiShuNotifyRequest {
 
    private TextRequestContent content;
+
+   public FeiShuTextNotifyRequest() {
+      super("text");
+   }
+
+   public FeiShuTextNotifyRequest(TextRequestContent content) {
+      this();
+      this.content = content;
+   }
 
    public static FeiShuTextNotifyRequest of(String content) {
       final TextRequestContent textContent = new TextRequestContent(content);
@@ -23,11 +30,6 @@ public class FeiShuTextNotifyRequest extends FeiShuNotifyRequest {
       request.setContent(textContent);
 
       return request;
-   }
-
-   @Override
-   public String getMsg_type() {
-      return "text";
    }
 
 }

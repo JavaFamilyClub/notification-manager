@@ -11,12 +11,19 @@ import java.io.Serializable;
  * @description 富文本消息
  */
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class FeiShuPostNotifyRequest extends FeiShuNotifyRequest {
 
    private FeiShuPostContent content;
+
+   public FeiShuPostNotifyRequest() {
+      super("post");
+   }
+
+   public FeiShuPostNotifyRequest(FeiShuPostContent content) {
+      this();
+      this.content = content;
+   }
 
    public static FeiShuPostNotifyRequest of(String title, BaseTextTagContentItem...items) {
       return FeiShuPostNotifyRequest.of(title, new BaseTextTagContentItem[][] { items });
@@ -32,11 +39,6 @@ public class FeiShuPostNotifyRequest extends FeiShuNotifyRequest {
       request.setContent(requestContent);
 
       return request;
-   }
-
-   @Override
-   public String getMsg_type() {
-      return "post";
    }
 
    @NoArgsConstructor

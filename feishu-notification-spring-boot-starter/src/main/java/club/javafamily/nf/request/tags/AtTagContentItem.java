@@ -7,15 +7,18 @@ import lombok.*;
  * @date 2022/6/4 下午11:41
  * @description
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class AtTagContentItem implements TagContentItem  {
+public class AtTagContentItem extends AbstractTagContentItem {
 
    private String user_id;
 
-   @Override
-   public String getTag() {
-      return "at";
+   public AtTagContentItem() {
+      super("at");
+   }
+
+   public AtTagContentItem(String user_id) {
+      this();
+      this.user_id = user_id;
    }
 }

@@ -21,7 +21,6 @@ public class DivMdTagContentItem extends BaseTextTagContentItem<LarkMdTagContent
       this.text = new LarkMdTagContentItem(text);
    }
 
-
    public DivMdTagContentItem(LarkMdTagContentItem text) {
       this();
       this.text = text;

@@ -9,4 +9,6 @@ import java.io.Serializable;
  */
 public interface NotifyRequest extends Serializable {
 
+   static final long serialVersionUID = 1L;
+
 }

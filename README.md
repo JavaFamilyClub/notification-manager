@@ -9,13 +9,13 @@
 
 详情请参考 [Notification-Manager Roadmap](https://github.com/orgs/JavaFamilyClub/projects/3/views/1)
 
-* [飞书](./feishu-notification-spring-boot-starter)
+* [飞书通知](./feishu-notification-spring-boot-starter)
   * 普通文本
   * 富文本
   * 图片(delay)
   * 消息卡片
 
-* [钉钉](./dingtalk-notification-spring-boot-starter)
+* [钉钉通知](./dingtalk-notification-spring-boot-starter)
   * 普通文本
   * MarkDown
   * Link
@@ -35,5 +35,9 @@
 
 # 3. 示例代码
 
-[examples](./examples)
+> 所有的示例代码都在 [examples](./examples)
+
+* `单独的通知组件`: [单独 Starter 引用示例](./examples/demo-notification-manager)
+* `notification-manager-all`: [notification-manager-all Starter 引用示例](./examples/demo-notification-manager-all)
+* `通知抑制示例`: [抑制配置示例](./examples/demo-notification-manager-inhibit)
 

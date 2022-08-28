@@ -4,7 +4,7 @@
 
 ## 1. 引入依赖
 
-* Maven Central Release
+* Maven Central Release (Maven 中央仓库正式版)
 
 ``` xml
 <dependency>
@@ -14,7 +14,7 @@
 </dependency>
 ```
 
-* Maven Central Snapshot
+* Maven Central Snapshot (Maven SNAPSHOT 仓库新功能尝鲜)
 
 ``` xml
    <!-- Snapshot 库需确保 snapshots 是被允许的 -->
@@ -56,7 +56,53 @@ javafamily:
          enabled: true  # 是否开启通知, 用于不同环境下的区分(开发, 测试, 生产), 默认为 true
 ```
 
-### 2.2 restTemplate 配置
+### 2.2 抑制策略
+
+> 当我们需要对通知进行抑制时(如: 通过飞书通知一些接口异常、服务宕机等信息, 有时候并不需要一直推送通知消息), 此时, 就可以通过抑制策略进行通知消息的抑制!
+
+```yml
+javafamily:
+   notify:
+      feishu:
+         hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
+         inhibit:
+            enabled: on # 默认为 off
+            ttl: 1h # 代表同一个消息, 1h 只推送一次
+```
+
+> 通过指定 `inhibit` 属性进行抑制配置, 目前支持的属性有:
+> * `enabled`: 是否开启抑制
+> * `ttl`: 抑制时效(同样的通知多久发送一次)
+
+> 通知抑制是通过 [javafamily-cache 组件](https://github.com/JavaFamilyClub/javafamily-cache) 提供组件服务与配置, 因此,
+> `feishu-notification-spring-boot-starter` 同样支持 `JavaFamilyClub/javafamily-cache` 组件的全部配置. 
+> 如:
+
+```yml
+javafamily:
+  notify:
+    feishu:
+      hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
+      inhibit:
+        enabled: on
+        ttl: 3s
+
+  cache:
+    type: caffeine # redis
+    key-prefix: demo- # 缓存 key 前缀
+    time-to-live: 20s # 缓存 expire 时间
+    caffeine: # caffeine 缓存相关配置
+      max-size: 500
+      weak-keys: on
+      soft-values: on
+      record-stats: on
+```
+
+> 需要注意, `cache.time-to-live` 与 `inhibit.ttl` 如果都配置, 则 `inhibit.ttl` 优先级更高(生效). 
+
+> 更多配置请查看 [JavaFamilyClub/javafamily-cache](https://github.com/JavaFamilyClub/javafamily-cache)
+
+### 2.3 restTemplate 配置
 
 > 发送 webhook 请求底层是通过封装的 `resttemplate` 进行请求,
 > 而 `restTemplate` 是通过 [javafamily-resttemplate-starter](https://github.com/JavaFamilyClub/javafamily-core/tree/main/javafamily-resttemplate-starter)
@@ -92,6 +138,7 @@ public class FeiShuNotifyTests {
 ## 4. 创建 Request, 发送通知
 
 * Text 通知
+
 ```java
    @Test
    void testNotifyText() {
@@ -105,6 +152,7 @@ public class FeiShuNotifyTests {
 ![image-20220806170743367](img/README//image-20220806170743367.png)
 
 * Post 通知
+
 ```java
    @Test
    void testNotifyPost() {
@@ -148,3 +196,10 @@ public class FeiShuNotifyTests {
 ```
 
 ![image-20220806170925022](img/README//image-20220806170925022.png)
+
+## 5. 示例代码
+
+> 所有的示例代码都在 [examples](./examples)
+
+* `组件使用示例`: [组件使用示例项目](./examples/demo-notification-manager)
+* `抑制通知示例`: [抑制配置示例项目](./examples/demo-notification-manager-inhibit)

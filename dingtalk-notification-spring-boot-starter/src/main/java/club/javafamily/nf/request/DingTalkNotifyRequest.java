@@ -11,6 +11,8 @@ import lombok.Data;
 @Data
 public abstract class DingTalkNotifyRequest implements NotifyRequest {
 
+   private static final long serialVersionUID = 1L;
+
    /**
     * 消息类型
     * @return

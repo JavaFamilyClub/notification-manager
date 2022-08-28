@@ -11,12 +11,19 @@ import java.io.Serializable;
  * @description 文本消息
  */
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class FeiShuImageNotifyRequest extends FeiShuNotifyRequest {
 
    private FeiShuImageContent content;
+
+   public FeiShuImageNotifyRequest() {
+      super("image");
+   }
+
+   public FeiShuImageNotifyRequest(FeiShuImageContent content) {
+      this();
+      this.content = content;
+   }
 
    public static FeiShuImageNotifyRequest of(InputStream in) {
       final FeiShuImageStreamContent textContent = new FeiShuImageStreamContent(in);
@@ -34,11 +41,6 @@ public class FeiShuImageNotifyRequest extends FeiShuNotifyRequest {
       request.setContent(textContent);
 
       return request;
-   }
-
-   @Override
-   public String getMsg_type() {
-      return "image";
    }
 
    @NoArgsConstructor
