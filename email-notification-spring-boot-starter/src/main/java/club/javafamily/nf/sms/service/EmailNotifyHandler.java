@@ -9,13 +9,16 @@ import club.javafamily.nf.sms.request.EmailInlineResourceItem;
 import club.javafamily.nf.sms.request.EmailNotifyRequest;
 import club.javafamily.utils.common.MessageException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.core.io.*;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StreamUtils;
 
 import javax.activation.DataSource;
 import javax.mail.internet.MimeMessage;
@@ -207,7 +210,7 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Boo
    }
 
    private Resource buildResource(ResourceTypeEnum type, Object source)
-      throws MalformedURLException
+           throws IOException
    {
       if(type == ResourceTypeEnum.LOCALE_FILE
          && source instanceof File)
@@ -227,13 +230,12 @@ public class EmailNotifyHandler implements NotifyHandler<EmailNotifyRequest, Boo
       else if(type == ResourceTypeEnum.STREAM
          && source instanceof InputStream)
       {
-         return new InputStreamResource((InputStream) source);
+         return new ByteArrayResource(StreamUtils.copyToByteArray((InputStream) source));
       }
       else if(type == ResourceTypeEnum.BYTE_ARRAY
          && source instanceof byte[])
       {
-         byte[] bytes = (byte[]) source;
-         return new InputStreamResource(new ByteArrayInputStream(bytes));
+         return new ByteArrayResource((byte[]) source);
       }
 
       log.error("No match source type! type: {}, source: {}", type, source);
