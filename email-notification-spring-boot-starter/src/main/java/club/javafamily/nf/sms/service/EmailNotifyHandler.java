@@ -9,14 +9,12 @@ import club.javafamily.nf.sms.request.EmailInlineResourceItem;
 import club.javafamily.nf.sms.request.EmailNotifyRequest;
 import club.javafamily.utils.common.MessageException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.core.io.*;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StreamUtils;
 
