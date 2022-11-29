@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.FileInputStream;
+
 /**
  * @author Jack Li
  * @date 2022/6/4 下午11:03
@@ -36,6 +38,17 @@ public class MailNotifyTests {
 
         System.out.println("ok");
     }
+
+    @Test
+    void testNotifyMimeStream() throws Exception {
+        emailNotifyHandler.sendMimeMessageWithStream("测试案例", "这是一个测试内容",
+               "代码资料.zip",
+               new FileInputStream( "E:\\Sunny\\react_资料\\代码资料.zip"),
+                "243853974@qq.com", "18829346477@163.com");
+
+        System.out.println("ok");
+    }
+
 
     @Test
     public void generatorEnvPassword() {
