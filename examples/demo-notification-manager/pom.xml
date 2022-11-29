@@ -13,7 +13,7 @@
    <version>1.0-SNAPSHOT</version>
 
    <properties>
-      <notification.manager.version>2.3.2-beta.11</notification.manager.version>
+      <notification.manager.version>2.3.2-beta.12</notification.manager.version>
    </properties>
 
    <repositories>
