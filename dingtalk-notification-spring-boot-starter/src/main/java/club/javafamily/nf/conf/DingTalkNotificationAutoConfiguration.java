@@ -1,39 +1,48 @@
 package club.javafamily.nf.conf;
 
+import club.javafamily.autoconfigre.cache.config.JavaFamilyCacheAutoConfiguration;
 import club.javafamily.nf.properties.DingTalkProperties;
-import club.javafamily.nf.service.DingTalkNotifyHandler;
-import club.javafamily.nf.service.NoOpDingTalkNotifyHandler;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.context.annotation.Import;
 
 /**
  * @author Jack Li
  * @date 2022/6/4 下午10:35
  * @description
  */
-@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(DingTalkProperties.class)
+@AutoConfigureAfter({
+   RestTemplateAutoConfiguration.class
+})
+@AutoConfigureBefore({
+   /**
+    * 需要修改 Cache ttl, 因此需要在 {@link JavaFamilyCacheAutoConfiguration} 之后
+    */
+   JavaFamilyCacheAutoConfiguration.class
+})
+@Import({ InhibitNotifyConf.class, DingTalkNotifyHandlerConf.class })
 public class DingTalkNotificationAutoConfiguration {
 
    private final DingTalkProperties properties;
-   private final RestTemplate restTemplate;
 
-   public DingTalkNotificationAutoConfiguration(DingTalkProperties properties,
-                                                RestTemplate restTemplate)
+   public DingTalkNotificationAutoConfiguration(DingTalkProperties properties)
    {
       this.properties = properties;
-      this.restTemplate = restTemplate;
    }
 
+   /**
+    * 将通知组件的抑制 ttl 生效于 Cache 组件. {@link club.javafamily.autoconfigre.cache.config.CacheCustomizer}
+    * @return 用于修改 cache ttl 的 Customizer
+    */
    @Bean
-   public DingTalkNotifyHandler dingTalkNotifyHandler() {
-      if(properties.getEnabled() == null || properties.getEnabled()) {
-         return new DingTalkNotifyHandler(properties, restTemplate);
-      }
-
-      return new NoOpDingTalkNotifyHandler(properties);
+   @ConditionalOnMissingBean
+   public DingTalkJavaFamilyCachePropertiesCustomizer dingTalkJavaFamilyCachePropertiesCustomizer() {
+      return new DingTalkJavaFamilyCachePropertiesCustomizer(properties);
    }
 
 }

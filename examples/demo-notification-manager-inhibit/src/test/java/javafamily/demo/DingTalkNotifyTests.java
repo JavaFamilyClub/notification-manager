@@ -1,23 +1,15 @@
 package javafamily.demo;
 
-import club.javafamily.nf.enums.CardBtnOrientationEnum;
-import club.javafamily.nf.request.FeiShuCardNotifyRequest;
-import club.javafamily.nf.request.FeiShuImageNotifyRequest;
-import club.javafamily.nf.request.FeiShuPostNotifyRequest;
 import club.javafamily.nf.request.card.feed.DingTalkFeedCardRequest;
 import club.javafamily.nf.request.card.feed.FeedCardRequestContentLink;
 import club.javafamily.nf.request.card.multi.DingTalkMultiBtnCardRequest;
 import club.javafamily.nf.request.card.single.DingTalkSingleBtnCardRequest;
 import club.javafamily.nf.request.link.DingTalkLinkRequest;
-import club.javafamily.nf.request.link.LinkRequestContent;
 import club.javafamily.nf.request.markdown.DingTalkMarkDownRequest;
-import club.javafamily.nf.request.tags.BaseTextTagContentItem;
 import club.javafamily.nf.request.tags.CardBtn;
-import club.javafamily.nf.request.tags.LinkTagContentItem;
 import club.javafamily.nf.request.text.DingTalkTextNotifyRequest;
 import club.javafamily.nf.service.DingTalkNotifyHandler;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,7 +32,12 @@ public class DingTalkNotifyTests {
 
    @Test
    void testNotifyText() {
-      final String response = dingTalkNotifyHandler.notify(
+      String response = dingTalkNotifyHandler.notify(
+         DingTalkTextNotifyRequest.of("这是一个测试数据!"));
+
+      System.out.println(response);
+
+      response = dingTalkNotifyHandler.notify(
          DingTalkTextNotifyRequest.of("这是一个测试数据!"));
 
       System.out.println(response);

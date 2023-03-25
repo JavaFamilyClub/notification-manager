@@ -4,6 +4,7 @@ import club.javafamily.autoconfigre.cache.config.JavaFamilyCacheAutoConfiguratio
 import club.javafamily.nf.properties.FeiShuProperties;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -39,8 +40,9 @@ public class FeiShuNotificationAutoConfiguration {
     * @return 用于修改 cache ttl 的 Customizer
     */
    @Bean
-   public JavaFamilyCachePropertiesCustomizer javaFamilyCacheCustomizer() {
-      return new JavaFamilyCachePropertiesCustomizer(properties);
+   @ConditionalOnMissingBean
+   public FeiShuJavaFamilyCachePropertiesCustomizer javaFamilyCacheCustomizer() {
+      return new FeiShuJavaFamilyCachePropertiesCustomizer(properties);
    }
 
 }
