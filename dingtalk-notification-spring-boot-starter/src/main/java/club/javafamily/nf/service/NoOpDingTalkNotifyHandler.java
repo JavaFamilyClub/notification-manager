@@ -6,7 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * 没有任何操作的 DingTalkNotifyHandler
+ * @author Jack Li
+ * @date 2023/3/26 上午12:15
+ * @description 没有任何操作的 DingTalkNotifyHandler
  */
 @Slf4j
 public class NoOpDingTalkNotifyHandler extends DingTalkNotifyHandler {
@@ -16,7 +18,7 @@ public class NoOpDingTalkNotifyHandler extends DingTalkNotifyHandler {
     }
 
     public NoOpDingTalkNotifyHandler(DingTalkProperties properties, RestTemplate restTemplate) {
-        super(properties, restTemplate);
+        super(properties, restTemplate, null);
     }
 
     @Override

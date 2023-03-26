@@ -3,7 +3,6 @@ package club.javafamily.nf.service;
 import club.javafamily.nf.enums.NotifySupportTypeEnum;
 import club.javafamily.nf.properties.DingTalkProperties;
 import club.javafamily.nf.request.DingTalkNotifyRequest;
-import club.javafamily.nf.request.NotifyRequest;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -14,12 +13,15 @@ import org.springframework.web.client.RestTemplate;
 public class DingTalkNotifyHandler extends BaseWebHookNotifyHandler<DingTalkNotifyRequest> {
 
     private final DingTalkProperties properties;
+    private final InhibitPolicy inhibitPolicy;
 
     public DingTalkNotifyHandler(DingTalkProperties properties,
-                                 RestTemplate restTemplate)
+                                 RestTemplate restTemplate,
+                                 InhibitPolicy inhibitPolicy)
     {
         super(restTemplate);
         this.properties = properties;
+        this.inhibitPolicy = inhibitPolicy;
     }
 
     @Override
@@ -39,7 +41,17 @@ public class DingTalkNotifyHandler extends BaseWebHookNotifyHandler<DingTalkNoti
 
     @Override
     public String notify(DingTalkNotifyRequest request) {
-        return postForJson(
-           properties.getHookUrl(), request, String.class);
+        // inhibited
+        if(inhibitPolicy != null && inhibitPolicy.isInhibited(request)) {
+            return InhibitRule.INHIBIT_RESPONSE;
+        }
+
+        String response = postForJson(properties.getHookUrl(), request, String.class);
+
+        if (inhibitPolicy != null) {
+            inhibitPolicy.completeInhibited(request, response);
+        }
+
+        return response;
     }
 }

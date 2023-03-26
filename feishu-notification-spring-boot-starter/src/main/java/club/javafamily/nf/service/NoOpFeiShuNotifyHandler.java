@@ -6,7 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * 没有任何操作的 FeiShuNotifyHandler
+ * @author Jack Li
+ * @date 2023/3/26 上午12:16
+ * @description 没有任何操作的 FeiShuNotifyHandler
  */
 @Slf4j
 public class NoOpFeiShuNotifyHandler extends FeiShuNotifyHandler {

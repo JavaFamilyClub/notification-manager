@@ -2,7 +2,7 @@ package club.javafamily.nf.conf;
 
 import club.javafamily.autoconfigre.cache.config.CachePropertiesCustomizer;
 import club.javafamily.autoconfigre.cache.properties.JavaFamilyCacheProperties;
-import club.javafamily.nf.properties.FeiShuProperties;
+import club.javafamily.nf.properties.DingTalkProperties;
 import club.javafamily.nf.properties.Inhibit;
 
 /**
@@ -10,11 +10,11 @@ import club.javafamily.nf.properties.Inhibit;
  * 如果 <tt>javafamily-cache</tt> 和 <tt>feishu-notification-spring-boot-starter</tt> 同时配置,
  * 则 <tt>feishu-notification-spring-boot-starter</tt> 生效
  */
-public class JavaFamilyCachePropertiesCustomizer implements CachePropertiesCustomizer {
+public class DingTalkJavaFamilyCachePropertiesCustomizer implements CachePropertiesCustomizer {
 
-    private final FeiShuProperties properties;
+    private final DingTalkProperties properties;
 
-    public JavaFamilyCachePropertiesCustomizer(FeiShuProperties properties) {
+    public DingTalkJavaFamilyCachePropertiesCustomizer(DingTalkProperties properties) {
         this.properties = properties;
     }
 
