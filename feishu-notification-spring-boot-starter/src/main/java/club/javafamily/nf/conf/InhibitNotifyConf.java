@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration(proxyBeanMethods = false)
-@ConditionalOnProperty(name = "javafamily.notify.feishu.inhibit.enabled", havingValue = "true")
+@Configuration
+@ConditionalOnProperty(prefix = "javafamily.notify.feishu.inhibit", name = "enabled", havingValue = "true")
 public class InhibitNotifyConf {
 
     private final CacheOperator cacheOperator;
