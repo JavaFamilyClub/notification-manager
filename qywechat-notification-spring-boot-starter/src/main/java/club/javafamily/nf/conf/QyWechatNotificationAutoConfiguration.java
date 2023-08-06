@@ -25,7 +25,7 @@ import org.springframework.context.annotation.Import;
       */
      JavaFamilyCacheAutoConfiguration.class
 })
-@Import({ InhibitNotifyConf.class, NotifyHandlerConf.class })
+@Import({ InhibitNotifyConf.class, QyWechatNotifyHandlerConf.class })
 public class QyWechatNotificationAutoConfiguration {
 
    private final QyWechatProperties properties;
@@ -41,7 +41,7 @@ public class QyWechatNotificationAutoConfiguration {
     */
    @Bean
    @ConditionalOnMissingBean
-   public QyWechatJavaFamilyCachePropertiesCustomizer javaFamilyCacheCustomizer() {
+   public QyWechatJavaFamilyCachePropertiesCustomizer qyWechatjavaFamilyCacheCustomizer() {
       return new QyWechatJavaFamilyCachePropertiesCustomizer(properties);
    }
 

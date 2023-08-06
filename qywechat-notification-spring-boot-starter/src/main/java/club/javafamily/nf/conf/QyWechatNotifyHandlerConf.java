@@ -13,15 +13,15 @@ import org.springframework.web.client.RestTemplate;
  * @description
  */
 @Configuration(proxyBeanMethods = false)
-public class NotifyHandlerConf {
+public class QyWechatNotifyHandlerConf {
 
    private final QyWechatProperties properties;
    private final RestTemplate restTemplate;
    private final InhibitPolicy inhibitPolicy;
 
-   public NotifyHandlerConf(QyWechatProperties properties,
-                            RestTemplate restTemplate,
-                            @Autowired(required = false) InhibitPolicy inhibitPolicy)
+   public QyWechatNotifyHandlerConf(QyWechatProperties properties,
+                                    RestTemplate restTemplate,
+                                    @Autowired(required = false) InhibitPolicy inhibitPolicy)
    {
       this.properties = properties;
       this.restTemplate = restTemplate;

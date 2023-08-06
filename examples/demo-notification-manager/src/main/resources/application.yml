@@ -4,6 +4,9 @@ jasypt:
 
 javafamily:
    notify:
+      qywechat:
+         hook-url: https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=d7ad561e-196c-4dad-bbda-06bd681db50f
+
       feishu:
          hook-url: https://open.feishu.cn/open-apis/bot/v2/hook/31a65e6b-0dab-491c-8de9-df3d16c19050
          security-type: keyword
@@ -40,6 +43,7 @@ javafamily:
                   receive-users: ['+86136xxxxxxxx', 188xxxxxxxx]
                }
             }
+
 
 spring:
    # Mail Config
