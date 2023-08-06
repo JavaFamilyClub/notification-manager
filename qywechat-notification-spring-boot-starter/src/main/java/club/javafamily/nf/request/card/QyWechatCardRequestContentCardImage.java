@@ -19,6 +19,6 @@ public class QyWechatCardRequestContentCardImage implements Serializable {
      * 图片的宽高比，宽高比要小于2.25，大于1.3，不填该参数默认1.3
      */
     @Builder.Default
-    private float aspect_ratio = 1.3F;
+    private Float aspect_ratio = 1.3F;
 
 }
