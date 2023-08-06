@@ -8,6 +8,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @ToString
+@Builder
 public class QyWechatCardRequestContentCardImage implements Serializable {
 
     /**

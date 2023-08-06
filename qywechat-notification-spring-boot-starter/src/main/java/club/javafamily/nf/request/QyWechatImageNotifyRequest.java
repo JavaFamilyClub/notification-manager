@@ -1,7 +1,6 @@
 package club.javafamily.nf.request;
 
 import club.javafamily.nf.request.content.ImageRequestContent;
-import club.javafamily.nf.request.content.ImageRequestContent;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
