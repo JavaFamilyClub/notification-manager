@@ -41,6 +41,11 @@
             <groupId>club.javafamily</groupId>
             <artifactId>email-notification-spring-boot-starter</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>qywechat-notification-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,0 +1,59 @@
+{
+   "groups": [
+      {
+         "name": "javafamily.notify.feishu",
+         "type": "club.javafamily.nf.properties.QyWechatProperties",
+         "sourceType": "club.javafamily.nf.properties.QyWechatProperties"
+      },
+      {
+         "name": "javafamily.notify.feishu.inhibit",
+         "type": "club.javafamily.nf.properties.Inhibit",
+         "sourceType": "club.javafamily.nf.properties.QyWechatProperties"
+      }
+   ],
+   "properties": [
+      {
+         "name": "javafamily.notify.feishu.enabled",
+         "type": "java.lang.Boolean",
+         "description": "是否启用.",
+         "sourceType": "club.javafamily.nf.properties.QyWechatProperties",
+         "defaultValue": true
+      },
+      {
+         "name": "javafamily.notify.feishu.hookUrl",
+         "type": "java.lang.String",
+         "description": "机器人 WebHook Url.",
+         "sourceType": "club.javafamily.nf.properties.QyWechatProperties",
+         "defaultValue": "https://open.feishu.cn/open-apis/bot/v2/hook/xxxx"
+      },
+      {
+         "name": "javafamily.notify.feishu.securityType",
+         "type": "club.javafamily.nf.enums.SecurityConfTypeEnum",
+         "sourceType": "club.javafamily.nf.properties.QyWechatProperties",
+         "description": "安全类型.",
+         "defaultValue": "KEYWORD"
+      },
+      {
+         "name": "javafamily.notify.feishu.keyWord",
+         "type": "java.lang.String",
+         "sourceType": "club.javafamily.nf.properties.QyWechatProperties",
+         "description": "关键词."
+      },
+      {
+         "name": "javafamily.notify.feishu.inhibit.enabled",
+         "type": "java.lang.Boolean",
+         "sourceType": "club.javafamily.nf.properties.Inhibit",
+         "description": "是否启用抑制.",
+         "defaultValue": false
+      },
+      {
+         "name": "javafamily.notify.feishu.inhibit.ttl",
+         "type": "java.time.Duration",
+         "sourceType": "club.javafamily.nf.properties.Inhibit",
+         "description": "抑制时效",
+         "defaultValue": "1h"
+      }
+   ],
+   "hints": [
+   ]
+}
