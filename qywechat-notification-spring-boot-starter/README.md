@@ -128,39 +128,45 @@ javafamily:
 ## 3. 注入 `QyWechatNotifyHandler`
 
 ``` java
+@Slf4j
 @SpringBootTest
 public class QyWechatNotifyTests {
 
    @Autowired
-   private QyWechatNotifyHandler qyWechatNotifyHandler;
+   private QyWechatNotifyHandler qywechatNotifyHandler;
 ```
 
 ## 4. 创建 Request, 发送通知
 
-* Text 通知
+* 文本类型 通知
 
 ```java
-   @Test
-   void testNotifyText() {
-      final String response = qywechatNotifyHandler.notify(
-         QyWechatTextNotifyRequest.of("这是一个测试数据!"));
+@Test
+void testNotifyText() {
+    final String response = qywechatNotifyHandler.notify(
+    QyWechatTextNotifyRequest.of("这是一个测试数据!"));
 
-      log.info(response);
-   }
+    log.info(response);
+}
 ```
 
-![image-20220806170743367](img/README//image-20220806170743367.png)
+![img.png](img/README//img.png)
 
-* Post 通知
+* markdown类型 通知
 
 ```java
    @Test
-   void testNotifyPost() {
-      final qywechatPostNotifyRequest request = qywechatPostNotifyRequest.of(
-         "项目更新通知(测试)",
-         new BaseTextTagContentItem("(测试)项目有更新: "),
-         new LinkTagContentItem("请查看",
-            "https://github.com/orgs/JavaFamilyClub/projects/3"));
+   void testNotifyMarkDown() {
+      String dataTime = "2022-06-05 23:00:00";
+      int shouldCount = 20, actualCount = 20;
+      String status = actualCount < shouldCount ? "异常" : "正常";
+
+      String content = "@18829346477 数据时次: " + dataTime
+              + "\n应收收据个数: " + shouldCount
+              + "\n实收数据个数: " + actualCount
+              + "\n监控状态: **" + status + "**";
+
+      QyWechatMarkdownNotifyRequest request = QyWechatMarkdownNotifyRequest.of(content);
 
       final String response = qywechatNotifyHandler.notify(request);
 
@@ -168,7 +174,71 @@ public class QyWechatNotifyTests {
    }
 ```
 
-![image-20220806170844395](img/README//image-20220806170844395.png)
+![image-20230806184852558](img\README\image-20230806184852558.png)
+
+* 图片类型通知
+
+```java
+   @Test
+   void testNotifyImage() throws Exception {
+      String imagePath = "C:\\Temp\\test.jpg";
+
+      Path path = Paths.get(imagePath);
+
+      byte[] byteArray = Files.readAllBytes(path);
+      QyWechatImageNotifyRequest request = QyWechatImageNotifyRequest.of(byteArray);
+
+      final String response = qywechatNotifyHandler.notify(request);
+
+      log.info(response);
+   }
+```
+
+
+
+![image-20230806191512459](img/README/image-20230806191512459.png)
+
+* 图文类型
+
+``` java
+   @Test
+   void testNotifyNews() throws Exception {
+      QyWechatNewsNotifyRequest request = QyWechatNewsNotifyRequest.of(
+              "金秋九月", "公司季度团建活动正式开始",
+              "https://github.com/JavaFamilyClub/notification-manager",
+              "https://t7.baidu.com/it/u=2204205512,3039153138&fm=193&f=GIF");
+
+      final String response = qywechatNotifyHandler.notify(request);
+
+      log.info(response);
+   }
+```
+
+
+
+![image-20230806192007510](img/README/image-20230806192007510.png)
+
+* 文件类型 消息
+
+// TODO
+
+
+
+* 语音类型 消息
+
+// TODO
+
+
+
+* 文本通知模版卡片 消息
+
+```java
+
+```
+
+
+
+
 
 * Card 通知
 
