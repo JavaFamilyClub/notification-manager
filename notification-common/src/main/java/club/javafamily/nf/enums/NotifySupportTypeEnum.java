@@ -25,5 +25,9 @@ public enum NotifySupportTypeEnum {
     /**
      * 邮件
      */
-    EMAIL
+    EMAIL,
+    /**
+     * 企业微信
+     */
+    QY_WECHAT
 }

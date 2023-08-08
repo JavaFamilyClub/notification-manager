@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnProperty(prefix = "javafamily.notify.feishu.inhibit", name = "enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "javafamily.notify.qywechat.inhibit", name = "enabled", havingValue = "true")
 public class InhibitNotifyConf {
 
     private final CacheOperator cacheOperator;

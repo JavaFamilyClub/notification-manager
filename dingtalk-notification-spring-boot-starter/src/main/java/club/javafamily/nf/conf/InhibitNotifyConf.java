@@ -16,8 +16,8 @@ import org.springframework.context.annotation.Configuration;
  * @date 2022/8/26 上午12:10
  * @description
  */
-@Configuration(proxyBeanMethods = false)
-@ConditionalOnProperty(name = "javafamily.notify.dingtalk.inhibit.enabled", havingValue = "true")
+@Configuration
+@ConditionalOnProperty(prefix = "javafamily.notify.dingtalk.inhibit", name = "enabled", havingValue = "true")
 public class InhibitNotifyConf {
 
     private final CacheOperator cacheOperator;

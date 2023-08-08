@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>club.javafamily</groupId>
+        <artifactId>notification-manager</artifactId>
+        <version>2.3.2-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>qywechat-notification-spring-boot-starter</artifactId>
+    <packaging>jar</packaging>
+    <name>${project.artifactId}</name>
+    <description>${project.artifactId}</description>
+    <url>https://github.com/JavaFamilyClub/notification-manager/tree/main/qywechat-notification-spring-boot-starter</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>javafamily-resttemplate-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>notification-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>club.javafamily</groupId>
+            <artifactId>javafamily-cache</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

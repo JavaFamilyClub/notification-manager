@@ -5,7 +5,7 @@
    <parent>
       <groupId>club.javafamily</groupId>
       <artifactId>javafamily-parent</artifactId>
-      <version>2.3.2-beta.2</version>
+      <version>2.3.2-SNAPSHOT</version>
    </parent>
    <modelVersion>4.0.0</modelVersion>
 
@@ -18,11 +18,11 @@
 
    <repositories>
       <repository>
-         <id>maven-central</id>
+         <id>javafamily-central-snapshot</id>
          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
          <releases>
             <enabled>false</enabled>
-            <updatePolicy>never</updatePolicy>
+            <updatePolicy>always</updatePolicy>
          </releases>
          <snapshots>
             <enabled>true</enabled>
@@ -71,6 +71,17 @@
          <groupId>club.javafamily</groupId>
          <artifactId>email-notification-spring-boot-starter</artifactId>
          <version>${notification.manager.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>club.javafamily</groupId>
+         <artifactId>qywechat-notification-spring-boot-starter</artifactId>
+         <version>${notification.manager.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.projectlombok</groupId>
+         <artifactId>lombok</artifactId>
       </dependency>
 
       <dependency>
