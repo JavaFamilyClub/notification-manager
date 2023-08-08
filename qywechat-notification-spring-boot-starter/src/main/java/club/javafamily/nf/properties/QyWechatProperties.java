@@ -18,5 +18,14 @@ public class QyWechatProperties extends WebHookProperties {
     /**
      * 上传文件地址
      */
-    private String uploadUrl = "https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key=KEY&type=TYPE";
+    private String uploadUrl = "https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media";
+
+    /**
+     * 获取密钥
+     * @return 密钥
+     */
+    public String findKey() {
+        // TODO
+        return null;
+    }
 }

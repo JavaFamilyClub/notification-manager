@@ -9,7 +9,6 @@ import lombok.ToString;
 import java.io.Serializable;
 import java.util.List;
 
-@NoArgsConstructor
 @AllArgsConstructor
 @Data
 @ToString
@@ -20,6 +19,10 @@ public class QyWechatCardRequestContent implements Serializable {
      */
     protected String card_type;
 
+    public QyWechatCardRequestContent() {
+        this.card_type = "text_notice";
+    }
+
     /**
      * 卡片来源样式信息，不需要来源样式可不填写
      */
@@ -28,7 +31,7 @@ public class QyWechatCardRequestContent implements Serializable {
     /**
      * 模版卡片的主要内容，包括一级标题和标题辅助信息
      */
-    protected QyWechatCardRequestContentMainTitle main_title;
+    protected TitleDescContent main_title;
 
     /**
      * 关键数据样式
@@ -59,4 +62,5 @@ public class QyWechatCardRequestContent implements Serializable {
      * 整体卡片的点击跳转事件，text_notice模版卡片中该字段为必填项
      */
     protected QyWechatCardRequestContentCardAction card_action;
+
 }

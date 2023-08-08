@@ -1,9 +1,6 @@
 package club.javafamily.nf.request.card;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -11,12 +8,14 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @ToString
+@Builder
 public class QyWechatCardRequestContentHorizontal implements Serializable {
 
     /**
      * 模版卡片的二级标题信息内容支持的类型，1是url，2是文件附件，3 代表点击跳转成员详情
      */
-    private String type;
+    @Builder.Default
+    private int type = 1;
 
     /**
      * 二级标题，建议不超过5个字

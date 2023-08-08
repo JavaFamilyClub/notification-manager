@@ -1,18 +1,19 @@
 package club.javafamily.nf.request.card;
 
 import club.javafamily.nf.request.content.TitleDescContent;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
-@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @Data
 @ToString
 public class QyWechatCardRequestNewsContent extends QyWechatCardRequestContent {
+
+    public QyWechatCardRequestNewsContent() {
+        this.card_type = "news_notice";
+    }
 
     /**
      * 图片样式

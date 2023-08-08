@@ -1,5 +1,8 @@
 package club.javafamily.nf.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 /**
@@ -8,6 +11,7 @@ import lombok.Data;
  * @description 请求消息实体
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class QyWechatNotifyRequest implements NotifyRequest {
 
    private static final long serialVersionUID = 1L;

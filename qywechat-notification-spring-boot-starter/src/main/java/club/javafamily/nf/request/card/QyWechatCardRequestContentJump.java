@@ -1,9 +1,6 @@
 package club.javafamily.nf.request.card;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -11,12 +8,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @ToString
+@Builder
 public class QyWechatCardRequestContentJump implements Serializable {
 
     /**
      * 跳转链接类型，0或不填代表不是链接，1 代表跳转url，2 代表跳转小程序
      */
-    private String type;
+    private int type;
 
     /**
      * 跳转链接样式的文案内容，建议不超过13个字

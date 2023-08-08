@@ -233,39 +233,149 @@ void testNotifyText() {
 * 文本通知模版卡片 消息
 
 ```java
-
-```
-
-
-
-
-
-* Card 通知
-
-``` java
    @Test
-   void testNotifyCard() {
-      String dataTime = "2022-06-05 23:00:00";
-      int shouldCount = 20, actualCount = 20;
-      String status = actualCount < shouldCount ? "异常" : "正常";
+   void testTextNotifyCard() {
+      QyWechatCardRequestContent requestContent = new QyWechatCardRequestContent();
 
-      String content = "数据时次: " + dataTime
-         + "\n应收收据个数: " + shouldCount
-         + "\n实收数据个数: " + actualCount
-         + "\n监控状态: **" + status + "**";
+      requestContent.setSource(QyWechatCardRequestContentSource.builder()
+              .icon_url("https://t7.baidu.com/it/u=2204205512,3039153138&fm=193&f=GIF")
+              .desc("JavaFamily 移动办公")
+              .desc_color(3)
+              .build());
 
-      final qywechatCardNotifyRequest request
-         = qywechatCardNotifyRequest.of("测试xxx数据监控", content,
-         "立即前往系统查看 :玫瑰:️ ✅ \uD83D\uDDA5️",
-         "https://github.com/orgs/JavaFamilyClub/projects/3");
+      requestContent.setMain_title(TitleDescContent.of("周任务完成率", "周任务平均完成率最终稿通告"));
+      requestContent.setEmphasis_content(TitleDescContent.of("85%", "本月任务平均完成率"));
 
-      final String response = qywechatNotifyHandler.notify(request);
+      requestContent.setQuote_area(QyWechatCardRequestContentQuoteArea.builder()
+              .type(0)
+              .title("Top1")
+              .quote_text("JackLi: 100%")
+              .build());
+
+      requestContent.setSub_title_text("查阅详情");
+      requestContent.setHorizontal_content_list(Arrays.asList(
+              QyWechatCardRequestContentHorizontal.builder()
+                      .type(1)
+                      .keyname("在线文档")
+                      .value("周任务完成率在线文档")
+                      .url("https://t7.baidu.com/it/u=2204205512,3039153138&fm=193&f=GIF")
+                      .build(),
+              QyWechatCardRequestContentHorizontal.builder()
+                      .type(2)
+                      .keyname("文件下载")
+                      .value("周任务完成率")
+                      .media_id("3JsHtiugcvnuMVGIvjGMT4I5TihgRFZZRazoD5CR52P3ASvpf2IqpG6bsCV2NPi1m")
+                      .build()));
+
+      requestContent.setJump_list(Arrays.asList(QyWechatCardRequestContentJump.builder()
+                      .type(1)
+                      .title("错误反馈")
+                      .url("https://github.com/JavaFamilyClub/notification-manager")
+                      .build(),
+              QyWechatCardRequestContentJump.builder()
+                      .type(0)
+                      .title("评判规则")
+                      .build()));
+
+      requestContent.setCard_action(QyWechatCardRequestContentCardAction.builder()
+              .type(1)
+              .url("https://github.com/JavaFamilyClub/notification-manager")
+              .build());
+
+      QyWechatCardNotifyRequest request = new QyWechatCardNotifyRequest(requestContent);
+
+      String response = qywechatNotifyHandler.notify(request);
 
       log.info(response);
    }
 ```
 
-![image-20220806170925022](img/README//image-20220806170925022.png)
+
+
+![image-20230808142619063](img/README/image-20230808142619063.png)
+
+
+
+* #### 图文展示模版卡片 消息
+
+``` java
+   @Test
+   void testNotifyImageTextCard() {
+      QyWechatCardRequestNewsContent requestContent = new QyWechatCardRequestNewsContent();
+
+      requestContent.setSource(QyWechatCardRequestContentSource.builder()
+              .icon_url("https://t7.baidu.com/it/u=2204205512,3039153138&fm=193&f=GIF")
+              .desc("JavaFamily 移动办公")
+              .desc_color(3)
+              .build());
+
+      requestContent.setMain_title(TitleDescContent.of("周任务完成率", "周任务平均完成率最终稿通告"));
+
+      requestContent.setCard_image(QyWechatCardRequestContentCardImage.builder()
+              .url("https://t7.baidu.com/it/u=2204205512,3039153138&fm=193&f=GIF")
+              .aspect_ratio(2.25F)
+              .build());
+
+      requestContent.setImage_text_area(QyWechatCardRequestContentImageTextArea.builder()
+              .type(1)
+              .url("https://github.com/JavaFamilyClub/notification-manager")
+              .image_url("https://hbimg.huabanimg.com/e51c5ec5a5b1e43128662531ea49732dbf1331991fe56-WQTUEo_fw658")
+              .title("欢迎使用 JavaFamily notification-manager")
+              .desc("JavaFamily notification-manager 是一个用于推送各类平台消息的 SDK")
+              .build());
+
+      requestContent.setQuote_area(QyWechatCardRequestContentQuoteArea.builder()
+              .type(0)
+              .title("Top1")
+              .quote_text("JackLi: 100%")
+              .build());
+
+      requestContent.setVertical_content_list(Arrays.asList(
+              TitleDescContent.of("周任务剩余数", "5"),
+              TitleDescContent.of("月度计划剩余数", "15")));
+
+      requestContent.setHorizontal_content_list(Arrays.asList(
+              QyWechatCardRequestContentHorizontal.builder()
+                      .type(1)
+                      .keyname("在线文档")
+                      .value("周任务完成率在线文档")
+                      .url("https://t7.baidu.com/it/u=2204205512,3039153138&fm=193&f=GIF")
+                      .build(),
+              QyWechatCardRequestContentHorizontal.builder()
+                      .type(2)
+                      .keyname("文件下载")
+                      .value("周任务完成率")
+                      .media_id("3JsHtiugcvnuMVGIvjGMT4I5TihgRFZZRazoD5CR52P3ASvpf2IqpG6bsCV2NPi1m")
+                      .build()));
+
+      requestContent.setJump_list(Arrays.asList(QyWechatCardRequestContentJump.builder()
+                      .type(1)
+                      .title("错误反馈")
+                      .url("https://github.com/JavaFamilyClub/notification-manager")
+                      .build(),
+              QyWechatCardRequestContentJump.builder()
+                      .type(0)
+                      .title("评判规则")
+                      .build()));
+
+      requestContent.setCard_action(QyWechatCardRequestContentCardAction.builder()
+              .type(1)
+              .url("https://github.com/JavaFamilyClub/notification-manager")
+              .build());
+
+      QyWechatCardNotifyRequest request = new QyWechatCardNotifyRequest(requestContent);
+
+      String response = qywechatNotifyHandler.notify(request);
+
+      log.info(response);
+   }
+```
+
+
+
+![image-20230808152145319](img/README/image-20230808152145319.png)
+
+
 
 ## 5. 示例代码
 
