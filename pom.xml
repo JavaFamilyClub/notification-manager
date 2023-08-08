@@ -6,7 +6,7 @@
     <groupId>club.javafamily</groupId>
     <artifactId>notification-manager</artifactId>
     <packaging>pom</packaging>
-    <version>2.3.2-beta.13</version>
+    <version>2.3.2-beta.14</version>
     <name>${project.artifactId}</name>
     <description>${project.artifactId}</description>
     <url>https://github.com/JavaFamilyClub/notification-manager</url>
@@ -53,7 +53,7 @@
         <javafamily.core.version>2.3.2-beta.4</javafamily.core.version>
         <javafamily.utils.version>2.3.2-beta.4</javafamily.utils.version>
         <javafamily.cache.version>2.3.2-beta.4</javafamily.cache.version>
-        <notification.manager.version>2.3.2-beta.13</notification.manager.version>
+        <notification.manager.version>2.3.2-beta.14</notification.manager.version>
     </properties>
 
     <modules>
