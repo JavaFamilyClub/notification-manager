@@ -33,6 +33,9 @@
 * [邮箱](./email-notification-spring-boot-starter)
 > 邮箱通知
 
+* [企业微信](./qywechat-notification-spring-boot-starter)
+> 企业微信通知
+
 # 3. 示例代码
 
 > 所有的示例代码都在 [examples](./examples)
